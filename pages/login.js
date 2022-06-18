@@ -24,7 +24,7 @@ export default function Home() {
   const { handleSubmit, register } = useForm();
 
   async function onSubmit(values) {
-    const { username, password } = values;
+    const { username } = values;
     const res = await fetch('https://talkbox.hasura.app/v1/graphql', {
       method: 'POST',
       headers: {

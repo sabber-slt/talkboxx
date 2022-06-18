@@ -3,7 +3,7 @@ import RecorderControls from './Record';
 
 const AudioScreen = ({ newsid }) => {
   const { recorderState, ...handlers } = useRecorder();
-  const { audio } = recorderState;
+  // const { audio } = recorderState;
 
   return (
     <div>

@@ -8,7 +8,7 @@ import useUser from '../utils/store/useUser';
 
 const Home = () => {
   const router = useRouter();
-  const { user, clearUser, reset, setUser } = useUser();
+  const { user, clearUser, setUser } = useUser();
   useEffect(() => {
     if (user === null) {
       router.push('/login');
