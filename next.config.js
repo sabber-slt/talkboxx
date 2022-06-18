@@ -17,6 +17,7 @@ const nextConfig = withPWA({
     skipWaiting: true,
     scope: '/app',
     sw: '/sw.js',
+    cacheStartUrl: false,
     disable: process.env.NODE_ENV === 'development',
     dynamicStartUrl: true,
   },
