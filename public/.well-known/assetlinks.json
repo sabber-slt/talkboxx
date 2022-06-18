@@ -3,9 +3,9 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "app.vercel.talkboxtemp.twa",
+      "package_name": "app.vercel.talkboxtempi.twa",
       "sha256_cert_fingerprints": [
-        "EC:CB:04:B9:86:61:8F:C4:5C:C6:FE:11:64:52:3B:14:B7:AB:AD:87:63:EF:9B:52:34:E8:A5:7D:97:DD:8F:91"
+        "CF:F9:20:EE:A8:73:3E:23:4D:14:C8:97:71:3E:DD:01:79:6D:46:6B:62:07:2B:7F:B4:58:82:F6:B6:06:C4:42"
       ]
     }
   }
