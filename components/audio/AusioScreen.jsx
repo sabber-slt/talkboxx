@@ -3,12 +3,16 @@ import RecorderControls from './Record';
 
 const AudioScreen = ({ newsid }) => {
   const { recorderState, ...handlers } = useRecorder();
-  // const { audio } = recorderState;
+  const { audio } = recorderState;
+  console.log(audio);
 
   return (
     <div>
       {/* <button onClick={playA}>dddddddddd</button> */}
       {/* <RecordingsList audio={audio} /> */}
+      <audio controls>
+        <source src={audio} type="audio/mp3" />
+      </audio>
       <div>
         <RecorderControls
           newsid={newsid}

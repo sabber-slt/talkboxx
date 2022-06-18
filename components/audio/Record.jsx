@@ -95,7 +95,6 @@ export default function RecorderControls({ recorderState, handlers, newsid }) {
 
             <div>
               <div>
-                {initRecording && <div></div>}
                 <span>{formatMinutes(recordingMinutes)}</span>
                 <span>:</span>
                 <span>{formatSeconds(recordingSeconds)}</span>
@@ -106,7 +105,7 @@ export default function RecorderControls({ recorderState, handlers, newsid }) {
           <HStack w="16">
             <div
               title=""
-              disabled={recordingSeconds === 0}
+              // disabled={recordingSeconds === 0}
               onClick={initRecording ? saveRecording : startRecording}
             >
               <Center bg="gray.100" borderRadius={100}>
