@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Box } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
@@ -13,7 +14,7 @@ export default function Home() {
     if (user === null) {
       router.push('/register');
     }
-  }, [user, router]);
+  }, []);
   return (
     <Box>
       <Header language={user ? user.language : 'en'} />
