@@ -19,7 +19,6 @@ const nextConfig = withPWA({
     sw: '/sw.js',
     cacheStartUrl: false,
     disable: process.env.NODE_ENV === 'development',
-    dynamicStartUrl: true,
   },
 });
 
