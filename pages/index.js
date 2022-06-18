@@ -14,7 +14,7 @@ export default function Home() {
     if (user === null) {
       router.push('/register');
     }
-  }, []);
+  }, [user]);
   return (
     <Box>
       <Header language={user ? user.language : 'en'} />
