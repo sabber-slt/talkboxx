@@ -10,9 +10,7 @@ const AudioScreen = ({ newsid }) => {
     <div>
       {/* <button onClick={playA}>dddddddddd</button> */}
       {/* <RecordingsList audio={audio} /> */}
-      <audio controls>
-        <source src={audio} type="audio/mp3" />
-      </audio>
+
       <div>
         <RecorderControls
           newsid={newsid}

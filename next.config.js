@@ -14,7 +14,7 @@ const nextConfig = withPWA({
   pwa: {
     dest: 'public',
     register: true,
-    skipWaiting: true,
+    runtimeCaching: true,
     scope: '/app',
     sw: '/sw.js',
     cacheStartUrl: false,
