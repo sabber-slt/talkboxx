@@ -50,7 +50,7 @@ const Header = ({ language }) => {
                 borderRadius={20}
                 overflow="hidden"
                 h="64"
-                boxShadow="dark-lg"
+                boxShadow="xl"
               >
                 <Box position="relative" zIndex={0} w="44" h="44">
                   <Image alt="" src={news.img} layout="fill" />

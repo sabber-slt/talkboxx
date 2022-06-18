@@ -123,8 +123,8 @@ const Home = () => {
             color="purple.700"
             my="3"
             onClick={() => {
-              clearUser(null);
-              reset;
+              clearUser();
+
               window.location.reload();
             }}
             leftIcon={<ExternalLinkIcon w="7" h="7" />}

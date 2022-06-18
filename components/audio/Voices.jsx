@@ -1,16 +1,23 @@
 import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons';
 import { Box, Center, Image, Text, VStack } from '@chakra-ui/react';
+import { useState } from 'react';
 
 import { useQuery } from 'react-query';
+import useLike from '../../utils/store/useLike';
 // import useUser from '../../utils/store/useUser';
 import { fetchComments } from '../../utils/useFetch';
 import { update_like } from '../../utils/useMution';
 
 const Voices = ({ newsid }) => {
-  // const { user } = useUser();
+  const { like, setLike } = useLike();
+  const [showError, setShowError] = useState(false);
 
-  const { data, isLoading } = useQuery(['news', newsid], () =>
-    fetchComments(newsid)
+  const { data, isLoading } = useQuery(
+    ['news', newsid],
+    () => fetchComments(newsid),
+    {
+      refetchInterval: 1000,
+    }
   );
   if (isLoading) {
     return <Box>Loading...</Box>;
@@ -18,12 +25,23 @@ const Voices = ({ newsid }) => {
 
   const comments = data?.data.voice.sort((a, b) => b.like - a.like);
   const upVote = (likeb, id) => {
-    console.log(likeb, id);
-    const like = likeb + 1;
-    update_like(id, like);
+    if (like.filter((item) => item === id)[0] === undefined) {
+      setLike(likeb);
+
+      setLike(id);
+      console.log(likeb, id);
+      const like = likeb + 1;
+      update_like(id, like);
+    } else {
+      setShowError(true);
+      setTimeout(() => {
+        setShowError(false);
+      }, 3000);
+    }
   };
 
   const downVote = (likeb, id) => {
+    setLike(id);
     console.log(likeb, id);
     const like = likeb - 1;
     update_like(id, like);
@@ -67,9 +85,15 @@ const Voices = ({ newsid }) => {
 
           <Center mr="3">
             <VStack>
-              <Box onClick={() => upVote(item.like, item.id)} h="6">
-                <ChevronUpIcon color="rgba(186,0,191)" w="5" h="5" />
-              </Box>
+              {showError ? (
+                <Text fontSize={14} color="gray.600">
+                  *
+                </Text>
+              ) : (
+                <Box onClick={() => upVote(item.like, item.id)} h="6">
+                  <ChevronUpIcon color="rgba(186,0,191)" w="5" h="5" />
+                </Box>
+              )}
               <Text color="gray.600">{item.like}</Text>
               <Box onClick={() => downVote(item.like, item.id)} h="6">
                 <ChevronDownIcon w="5" color="rgba(186,0,191)" h="5" />

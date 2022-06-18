@@ -17,7 +17,6 @@ const Home = () => {
   if (isLoading) {
     return <Box>Loading...</Box>;
   }
-  console.log(query);
 
   return (
     <Box py="16">

@@ -6,7 +6,7 @@ const useUser = create(
     (set) => ({
       user: null,
       setUser: (user) => set(() => ({ user })),
-      clearUser: (user) => set(() => ({ user: user })),
+      clearUser: () => set(() => ({ user: null })),
     }),
     {
       name: 'info',

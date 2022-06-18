@@ -11,13 +11,7 @@ const AppContainer = styled.div`
   font-family: 'Lalezar', sans-serif;
 `;
 
-const reactQueryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 7 * 1000,
-    },
-  },
-});
+const reactQueryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -31,10 +25,12 @@ function MyApp({ Component, pageProps }) {
         />
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/icon.png" />
-        <meta name="theme-color" content="#fafafa" />
+        <meta name="theme-color" content="#EDF2F7" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="msapplication-tap-highlight" content="no" />
+
+        <link rel="apple-touch-startup-image" href="/splash.png" />
       </Head>
       <QueryClientProvider client={reactQueryClient}>
         <ReactQueryDevtools initialIsOpen={false} />

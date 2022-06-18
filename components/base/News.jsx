@@ -2,18 +2,22 @@ import { Box, Center, Flex, HStack, Text, VStack } from '@chakra-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useQuery } from 'react-query';
+import useUser from '../../utils/store/useUser';
 import { fetchNews } from '../../utils/useFetch';
 
 const News = () => {
-  const { data, isLoading } = useQuery(['news', 'en'], () => fetchNews('en'));
+  const { user } = useUser();
+  const { data, isLoading } = useQuery(['news', user?.language], () =>
+    fetchNews(user?.language)
+  );
   if (isLoading) {
     return <Box></Box>;
   }
-  console.log(data);
+  const sort = data.data.news.sort((a, b) => b.id - a.id);
 
   return (
     <Flex w="full" h="full" flexDirection="column" my="16" alignItems="center">
-      {data.data.news.map((news) => (
+      {sort.map((news) => (
         <Box key={news.id}>
           <Link
             href={{
@@ -55,9 +59,11 @@ const News = () => {
                   <Text
                     px="2"
                     fontSize={12}
-                    textAlign="center"
                     color="gray.700"
                     fontWeight={300}
+                    style={{
+                      direction: user?.language === 'ir' ? 'rtl' : 'ltr',
+                    }}
                   >
                     {news.content.slice(0, 100)}...
                   </Text>

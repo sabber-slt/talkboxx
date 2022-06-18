@@ -10,7 +10,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import useUser from '../utils/store/useUser';
 
@@ -21,11 +21,6 @@ export default function Home() {
   const { setUser, user } = useUser();
   console.log(user);
 
-  useEffect(() => {
-    if (user !== null) {
-      router.push('/');
-    }
-  }, [user, router]);
   const { handleSubmit, register } = useForm();
 
   async function onSubmit(values) {
@@ -64,7 +59,13 @@ export default function Home() {
   }
 
   return (
-    <Box w="100%" h={['100vh', '2xl']} position="relative" bg="green.800">
+    <Box
+      w="100%"
+      h="100vh"
+      overflow="hidden"
+      position="relative"
+      bg="purple.800"
+    >
       <AspectRatio
         position="absolute"
         w="full"
@@ -134,7 +135,6 @@ export default function Home() {
                   Submit
                 </Button>
                 <Button
-                  type="submit"
                   colorScheme="gray"
                   variant="outline"
                   mt="8"

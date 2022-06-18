@@ -2,7 +2,7 @@ import { Box, Center, Spinner } from '@chakra-ui/react';
 
 const Loading = () => {
   return (
-    <Box w="full" h="100vh">
+    <Box w="full" h="100vh" position="absolute">
       <Center>
         <Spinner
           thickness="4px"

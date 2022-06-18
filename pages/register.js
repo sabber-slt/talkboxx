@@ -4,6 +4,8 @@ import {
   Box,
   Button,
   Center,
+  FormControl,
+  FormErrorMessage,
   FormLabel,
   Input,
   Radio,
@@ -23,7 +25,11 @@ export default function Home() {
   const [err, setErr] = useState('');
   const { setUser } = useUser();
 
-  const { handleSubmit, register } = useForm();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+  } = useForm();
 
   async function onSubmit(values) {
     const { username, password, email, language } = values;
@@ -54,7 +60,7 @@ export default function Home() {
       }),
     });
     const data = await res.json();
-    if (data.data.insert_user_one) {
+    if (data.data) {
       console.log(data);
       setUser(data.data.insert_user_one);
       router.push('/');
@@ -65,7 +71,13 @@ export default function Home() {
   }
 
   return (
-    <Box w="100%" h={['100vh', '2xl']} position="relative" bg="green.800">
+    <Box
+      w="100%"
+      h="100vh"
+      overflowY="hidden"
+      position="relative"
+      bg="purple.800"
+    >
       <AspectRatio
         position="absolute"
         w="full"
@@ -101,18 +113,29 @@ export default function Home() {
         >
           <Text color="rgba(186,0,191,0.7)">{err}</Text>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <FormLabel htmlFor="email" mt="5">
-              username
-            </FormLabel>
-            <Input
-              width="auto"
-              spacing={3}
-              color="gray.600"
-              borderColor="rgba(186,0,191,0.7)"
-              type="text"
-              {...register('username', { required: true })}
-            />
-            <FormLabel htmlFor="email" mt="5">
+            <FormControl isInvalid={errors.name}>
+              <FormLabel htmlFor="username" mt="5">
+                username
+              </FormLabel>
+              <FormErrorMessage>
+                {errors.name && errors.name.message}
+              </FormErrorMessage>
+              <Input
+                width="auto"
+                spacing={3}
+                color="gray.600"
+                borderColor="rgba(186,0,191,0.7)"
+                type="text"
+                {...register('username', {
+                  required: true,
+                  maxLength: {
+                    value: 8,
+                    message: 'username should not be more than 8 character ',
+                  },
+                })}
+              />
+            </FormControl>
+            <FormLabel htmlFor="password" mt="5">
               password
             </FormLabel>
             <Input
@@ -159,6 +182,7 @@ export default function Home() {
               <VStack>
                 <Button
                   type="submit"
+                  isLoading={isSubmitting}
                   colorScheme="gray"
                   variant="outline"
                   mt="5"
@@ -166,7 +190,6 @@ export default function Home() {
                   Submit
                 </Button>
                 <Button
-                  type="submit"
                   colorScheme="gray"
                   variant="outline"
                   mt="8"

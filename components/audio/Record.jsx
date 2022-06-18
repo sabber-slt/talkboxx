@@ -13,8 +13,6 @@ export default function RecorderControls({ recorderState, handlers, newsid }) {
   const { aud, clearAud } = useAud();
   const [shown, setShown] = useState(false);
 
-  console.log(aud);
-
   const upload = async () => {
     setShown(true);
     const res = await fetch('https://talkbox.hasura.app/v1/graphql', {

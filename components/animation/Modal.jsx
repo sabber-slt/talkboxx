@@ -53,7 +53,7 @@ export default function Modal({ newsid, title }) {
           <DrawerBody>
             <Voices newsid={newsid} />
           </DrawerBody>
-          <DrawerFooter>
+          <DrawerFooter my="8">
             <AudioScreen newsid={newsid} />
           </DrawerFooter>
         </DrawerContent>
