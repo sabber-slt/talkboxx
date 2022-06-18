@@ -14,9 +14,9 @@ const nextConfig = withPWA({
   pwa: {
     dest: 'public',
     register: true,
+    skipWaiting: true,
     scope: '/app',
-    sw: '/sw.js',
-    cacheStartUrl: false,
+
     disable: process.env.NODE_ENV === 'development',
   },
 });
