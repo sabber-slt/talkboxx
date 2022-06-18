@@ -1,7 +1,27 @@
 {
+  "screenshots": [
+    {
+      "src": "https://www.pwabuilder.com/assets/screenshots/screen1.png",
+      "sizes": "2880x1800",
+      "type": "image/png",
+      "description": "PWABuilder Home Screen"
+    },
+    {
+      "src": "https://www.pwabuilder.com/assets/screenshots/screen2.png",
+      "sizes": "2880/1800",
+      "type": "image/png",
+      "description": "PWABuilder Report Card"
+    },
+    {
+      "src": "https://www.pwabuilder.com/assets/screenshots/screen3.png",
+      "sizes": "2880x1800",
+      "type": "image/png",
+      "description": "Manifest information on the Report Card"
+    }
+  ],
   "shortcuts": [
     {
-      "name": "talkbbb box",
+      "name": "Talk Box ",
       "short_name": "Start Live",
       "description": "Jump direction into starting or joining a live session",
       "icons": [
@@ -21,6 +41,7 @@
   "orientation": "portrait",
   "scope": "/",
   "start_url": "/",
+  "display_override": ["fullscreen", "minimal-ui"],
   "icons": [
     {
       "src": "icons/icon-72x72.png",
@@ -60,6 +81,11 @@
     {
       "src": "icons/icon-512x512.png",
       "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/splash.png",
+      "sizes": "3867x5844",
       "type": "image/png"
     }
   ]
