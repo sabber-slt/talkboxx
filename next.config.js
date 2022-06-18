@@ -18,6 +18,7 @@ const nextConfig = withPWA({
     scope: '/app',
     sw: '/sw.js',
     disable: process.env.NODE_ENV === 'development',
+    dinamicStartUrl: true,
   },
 });
 

@@ -82,11 +82,6 @@
       "src": "icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
-    },
-    {
-      "src": "icons/splash.png",
-      "sizes": "3867x5844",
-      "type": "image/png"
     }
   ]
 }
