@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.vercel.talkboxapp.twa",
+      "sha256_cert_fingerprints": [
+        "E7:EB:75:3E:D1:0A:20:28:2F:6B:9D:D5:7C:B9:33:90:08:F6:26:7F:C3:B8:67:8C:D0:A7:3B:3B:24:86:EC:1C"
+      ]
+    }
+  }
+]
