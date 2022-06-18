@@ -41,10 +41,17 @@ const Voices = ({ newsid }) => {
   };
 
   const downVote = (likeb, id) => {
-    setLike(id);
-    console.log(likeb, id);
-    const like = likeb - 1;
-    update_like(id, like);
+    if (like.filter((item) => item === id)[0] === undefined) {
+      setLike(id);
+      console.log(likeb, id);
+      const like = likeb - 1;
+      update_like(id, like);
+    } else {
+      setShowError(true);
+      setTimeout(() => {
+        setShowError(false);
+      }, 3000);
+    }
   };
 
   return (

@@ -50,10 +50,8 @@ export default function RecorderControls({ recorderState, handlers, newsid }) {
   };
 
   const play = () => {
-    if (aud) {
-      const pl = new Audio(aud);
-      pl.play();
-    }
+    const pl = new Audio(aud);
+    pl.play();
   };
   return (
     <>
