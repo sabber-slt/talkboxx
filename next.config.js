@@ -9,6 +9,7 @@ const nextConfig = withPWA({
       'static01.nyt.com',
       'newsmedia.tasnimnews.com',
       'www.tasnimnews.com',
+      'cdn.cnn.com',
     ],
   },
   pwa: {

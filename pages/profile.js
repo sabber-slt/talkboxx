@@ -82,16 +82,9 @@ const Home = () => {
   };
 
   return (
-    <Box pt="16">
-      <Center flexDirection="column" h="80" bg="purple.100">
-        <Image
-          shadow="2xl"
-          alt=""
-          src={user?.img || ''}
-          borderRadius={15}
-          w={150}
-          h={150}
-        />
+    <Box pt="16" h="full">
+      <Center flexDirection="column" h="80" bg="#BA00BF">
+        <Image alt="" src={user?.img || ''} borderRadius={15} w={150} h={150} />
         <form onSubmit={handleSubmit}>
           <VStack mt="4">
             <Center w="24">
@@ -111,7 +104,7 @@ const Home = () => {
           </VStack>
         </form>
       </Center>
-      <Center>
+      <Center h="full">
         <VStack>
           <Button
             size="lg"

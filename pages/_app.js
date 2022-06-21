@@ -1,6 +1,6 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import styled from '@emotion/styled';
-import '@fontsource/lalezar';
+import '@fontsource/martel';
 import Head from 'next/head';
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -8,7 +8,7 @@ import Layout from '../components/Layout';
 import '../styles/globals.css';
 
 const AppContainer = styled.div`
-  font-family: 'Lalezar', sans-serif;
+  font-family: 'Martel', serif;
 `;
 
 const reactQueryClient = new QueryClient();

@@ -7,18 +7,11 @@ const AudioScreen = ({ newsid }) => {
   console.log(audio);
 
   return (
-    <div>
-      {/* <button onClick={playA}>dddddddddd</button> */}
-      {/* <RecordingsList audio={audio} /> */}
-
-      <div>
-        <RecorderControls
-          newsid={newsid}
-          recorderState={recorderState}
-          handlers={handlers}
-        />
-      </div>
-    </div>
+    <RecorderControls
+      newsid={newsid}
+      recorderState={recorderState}
+      handlers={handlers}
+    />
   );
 };
 

@@ -43,10 +43,10 @@ export default function Modal({ newsid, title }) {
 
       <Drawer onClose={onClose} isOpen={isOpen} size={size}>
         <DrawerOverlay />
-        <DrawerContent>
+        <DrawerContent opacity={0.9}>
           <DrawerCloseButton />
           <DrawerHeader>
-            <Text mt="5" textAlign="center" color="purple.600">
+            <Text mt="5" textAlign="center" color="#BA00BF">
               {title}
             </Text>
           </DrawerHeader>

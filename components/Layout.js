@@ -7,10 +7,9 @@ const Layout = ({ children }) => {
     <>
       <Box>
         <Center position="fixed" w="full" h="16" bg="gray.100" zIndex={110}>
-          <Text fontSize={18} color="purple.600">
+          <Text fontWeight="extrabold" fontSize={18} color="#BA00BF">
             TALK BOX
           </Text>
-          <Image alt="" src={'/image/micon.svg'} width={50} height={50} />
         </Center>
         {children}
         <Center>

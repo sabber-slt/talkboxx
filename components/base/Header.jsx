@@ -1,5 +1,5 @@
-import { Box, Center, Flex, Text, VStack } from '@chakra-ui/react';
-import Image from 'next/image';
+import { Box, Center, Flex, Image, Text, VStack } from '@chakra-ui/react';
+
 import Link from 'next/link';
 import { useQuery } from 'react-query';
 import { fetchPublic } from '../../utils/useFetch';
@@ -21,6 +21,8 @@ const Header = ({ language }) => {
       overflowY="hidden"
       alignItems="center"
       flexWrap="nowrap"
+      flexDirection="row-reverse"
+      style={{ direction: 'rtl' }}
       sx={{
         scrollbarWidth: 'none',
         '::-webkit-scrollbar': {
@@ -30,7 +32,7 @@ const Header = ({ language }) => {
     >
       <Center>
         {data.data.news.map((news) => (
-          <Box key={news.id}>
+          <Box key={news.id} display="flex">
             <Link
               href={{
                 pathname: '/news',
@@ -46,26 +48,26 @@ const Header = ({ language }) => {
             >
               <VStack
                 mx="3"
-                bg="rgba(186,0,191,0.7)"
-                borderRadius={20}
+                bg="#BA00BF"
                 overflow="hidden"
                 h="64"
                 boxShadow="xl"
               >
-                <Box position="relative" zIndex={0} w="44" h="44">
-                  <Image alt="" src={news.img} layout="fill" />
+                <Box position="relative" zIndex={0} w="44" h="40">
+                  <Image alt="" src={news.img} w="44" h="40" />
                 </Box>
-                <Box h="28" w="44">
+                <Center h="36" w="44">
                   <Text
                     p="2"
-                    fontSize={14}
+                    fontSize={13}
                     textAlign="center"
                     color="gray.50"
                     zIndex={100}
+                    fontWeight={600}
                   >
                     {news.title}
                   </Text>
-                </Box>
+                </Center>
               </VStack>
             </Link>
           </Box>

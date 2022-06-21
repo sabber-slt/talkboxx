@@ -1,5 +1,12 @@
-import { Box, Center, Flex, HStack, Text, VStack } from '@chakra-ui/react';
-import Image from 'next/image';
+import {
+  Box,
+  Center,
+  Flex,
+  HStack,
+  Image,
+  Text,
+  VStack,
+} from '@chakra-ui/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
@@ -40,52 +47,43 @@ const Home = () => {
               }}
               passhref="true"
             >
-              <HStack
-                my="5"
-                bg="gray.200"
-                borderRadius={10}
-                overflow="hidden"
-                h="56"
-                w="96"
-              >
-                <Box position="relative" zIndex={0} w="48" h="56">
-                  <Image alt="" src={news.img} layout="fill" />
+              <HStack my="5" bg="gray.200" overflow="hidden" h="64" w="96">
+                <Box position="relative" zIndex={0} w="64" h="64">
+                  <Image boxSize="64" objectFit="cover" alt="" src={news.img} />
                 </Box>
                 <VStack h="56" justifyContent="space-around">
-                  <Box w="52">
+                  <Box w="44">
                     <Text
                       px="3"
+                      fontWeight="bold"
                       fontSize={15}
                       textAlign="center"
-                      fontWeight={300}
                       color="gray.700"
                     >
                       {news.title}
                     </Text>
                   </Box>
-                  <Box w="56">
+                  <Box w="44">
                     <Text
                       px="2"
                       fontSize={12}
                       textAlign="center"
                       color="gray.700"
-                      fontWeight={300}
+                      fontWeight="bold"
                     >
                       {news.content.slice(0, 100)}...
                     </Text>
                   </Box>
-                  <Box w="52">
-                    <HStack w="52" justifyContent="space-between" px="2">
+                  <Box w="44">
+                    <HStack w="44" justifyContent="space-between" px="2">
                       <Center>
-                        <Image
-                          alt=""
-                          src="/image/audio.png"
-                          width={28}
-                          height={28}
-                        />
+                        <Image alt="" src="/image/audio.png" w="8" h="8" />
                         <Text ml="1">{news.voices.length}</Text>
                       </Center>
-                      <Text>{news.source}</Text>
+                      <Text fontWeight="bold" fontSize={13}>
+                        {' '}
+                        {news.source}
+                      </Text>
                     </HStack>
                   </Box>
                 </VStack>

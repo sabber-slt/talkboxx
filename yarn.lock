@@ -1629,6 +1629,11 @@
   resolved "https://registry.yarnpkg.com/@fontsource/lalezar/-/lalezar-4.5.8.tgz#31caa959cf64995b5a670cea04b869b24407f7dd"
   integrity sha512-b/r2PSqfAGAOswostkIBgtZqmh/aW20VUf5Ar2TOu+DgviK6iuCpvIFOtIGqud3fm8G1VSgn/GvWU++WQX6jGg==
 
+"@fontsource/martel@^4.5.8":
+  version "4.5.8"
+  resolved "https://registry.yarnpkg.com/@fontsource/martel/-/martel-4.5.8.tgz#c6061c25ef3d7f7bdaf09ac19379dd72b4fd0d0a"
+  integrity sha512-ivyGORnIrRvtQ8rXcKGE0N2CON+iRWZ+rbEuGlRD6rYBtOc3PfdTzBqOZw0vfyQxCZW0E8ZUPeYI8mS8dmSd9Q==
+
 "@humanwhocodes/config-array@^0.9.2":
   version "0.9.5"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.9.5.tgz#2cbaf9a89460da24b5ca6531b8bbfc23e1df50c7"

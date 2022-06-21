@@ -32,7 +32,9 @@ const Menu = () => {
                 <Center h="24">
                   <VStack>
                     <Image alt="" w="10" h="10" src={item.img} />
-                    <Text color="rgba(186,0,191)">{item.title}</Text>
+                    <Text fontWeight={600} color="rgba(186,0,191)">
+                      {item.title}
+                    </Text>
                   </VStack>
                 </Center>
               </a>

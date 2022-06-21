@@ -4,14 +4,15 @@ import useUser from '../../utils/store/useUser';
 const NewsPage = ({ img, title, source, content }) => {
   const { user } = useUser();
   return (
-    <Box>
-      <Image pt="16" alt="" w="full" h="80" src={img} />
+    <Box py="12">
+      <Image alt="" w="full" h="96" src={img} />
       <Text
         style={{ direction: user?.language === 'ir' ? 'rtl' : 'ltr' }}
         fontSize={25}
         px="5"
         my="3"
-        color="rgba(186,0,191,0.7)"
+        color="#BA00BF"
+        fontWeight="bold"
       >
         {title}
       </Text>
@@ -28,8 +29,9 @@ const NewsPage = ({ img, title, source, content }) => {
         style={{ direction: user?.language === 'ir' ? 'rtl' : 'ltr' }}
         whiteSpace="break-spaces"
         fontSize={16}
+        fontWeight="bold"
         px="5"
-        my="3"
+        py="5"
         color="gray.600"
       >
         {content}

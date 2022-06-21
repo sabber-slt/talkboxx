@@ -15,6 +15,7 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@fontsource/lalezar": "^4.5.8",
+    "@fontsource/martel": "^4.5.8",
     "framer-motion": "^6",
     "next": "12.1.6",
     "next-pwa": "^5.5.4",
