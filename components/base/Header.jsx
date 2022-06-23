@@ -1,6 +1,6 @@
 import { Box, Center, Flex, Image, Text, VStack } from '@chakra-ui/react';
-
 import Link from 'next/link';
+
 import { useQuery } from 'react-query';
 import { fetchPublic } from '../../utils/useFetch';
 import Loading from '../animation/Loading';
@@ -12,7 +12,7 @@ const Header = ({ language }) => {
   if (isLoading) {
     return <Loading />;
   }
-
+  console.log(data);
   return (
     <Flex
       w="full"
@@ -31,8 +31,8 @@ const Header = ({ language }) => {
       }}
     >
       <Center>
-        {data.data.news.map((news) => (
-          <Box key={news.id} display="flex">
+        {data.data.jsonData[0].info.map((news, index) => (
+          <Box key={index} display="flex">
             <Link
               href={{
                 pathname: '/news',
@@ -53,19 +53,19 @@ const Header = ({ language }) => {
                 h="64"
                 boxShadow="xl"
               >
-                <Box position="relative" zIndex={0} w="44" h="40">
-                  <Image alt="" src={news.img} w="44" h="40" />
+                <Box position="relative" zIndex={0} w="44" h="36">
+                  <Image alt="" src={news.urlToImage} w="44" h="36" />
                 </Box>
-                <Center h="36" w="44">
+                <Center style={{ direction: 'ltr' }} h="40" w="44">
                   <Text
                     p="2"
-                    fontSize={13}
+                    fontSize={12}
                     textAlign="center"
                     color="gray.50"
                     zIndex={100}
                     fontWeight={600}
                   >
-                    {news.title}
+                    {news.title.slice(0, 80)}...
                   </Text>
                 </Center>
               </VStack>

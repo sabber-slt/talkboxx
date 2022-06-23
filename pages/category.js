@@ -1,12 +1,4 @@
-import {
-  Box,
-  Center,
-  Flex,
-  HStack,
-  Image,
-  Text,
-  VStack,
-} from '@chakra-ui/react';
+import { Box, Center, Flex, Image, Text, VStack } from '@chakra-ui/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
@@ -24,73 +16,82 @@ const Home = () => {
   if (isLoading) {
     return <Box>Loading...</Box>;
   }
-
+  console.log(data);
   return (
     <Box py="16">
       <Box w="full" h="80" position="relative">
-        <Image alt="" src={query.img} layout="fill" priority />
+        <Image alt="" src={query.img} layout="fill" priority={true} />
       </Box>
 
       <Flex w="full" h="full" flexDirection="column" alignItems="center">
-        {data.data.news.map((news) => (
-          <Box key={news.id}>
-            <Link
-              href={{
-                pathname: '/news',
-                query: {
-                  id: news.id,
-                  img: news.img,
-                  title: news.title,
-                  content: news.content,
-                  source: news.source,
-                },
-              }}
-              passhref="true"
-            >
-              <HStack my="5" bg="gray.200" overflow="hidden" h="64" w="96">
-                <Box position="relative" zIndex={0} w="64" h="64">
-                  <Image boxSize="64" objectFit="cover" alt="" src={news.img} />
-                </Box>
-                <VStack h="56" justifyContent="space-around">
-                  <Box w="44">
-                    <Text
-                      px="3"
-                      fontWeight="bold"
-                      fontSize={15}
-                      textAlign="center"
-                      color="gray.700"
-                    >
-                      {news.title}
-                    </Text>
+        <Box>
+          {data.data.jsonData[0].info.map((news, index) => (
+            <Box key={index}>
+              <Link
+                href={{
+                  pathname: '/news',
+                  query: {
+                    id: news.title,
+                    img: news.urlToImage,
+                    title: news.title,
+                    content: news.content,
+                    source: news.source.name,
+                  },
+                }}
+                passhref="true"
+              >
+                <VStack
+                  justifyContent="flex-end"
+                  my="5"
+                  bg="gray.200"
+                  overflow="hidden"
+                  h="72"
+                  w="96"
+                >
+                  <Box position="relative" zIndex={0} w="96" h="72">
+                    <Image
+                      // boxSize="72"
+                      w="96"
+                      h="72"
+                      objectFit="cover"
+                      // objectPosition="center"
+                      alt=""
+                      src={news.urlToImage}
+                    />
                   </Box>
-                  <Box w="44">
-                    <Text
-                      px="2"
-                      fontSize={12}
-                      textAlign="center"
-                      color="gray.700"
-                      fontWeight="bold"
-                    >
-                      {news.content.slice(0, 100)}...
-                    </Text>
-                  </Box>
-                  <Box w="44">
-                    <HStack w="44" justifyContent="space-between" px="2">
-                      <Center>
-                        <Image alt="" src="/image/audio.png" w="8" h="8" />
-                        <Text ml="1">{news.voices.length}</Text>
-                      </Center>
-                      <Text fontWeight="bold" fontSize={13}>
-                        {' '}
-                        {news.source}
+                  <VStack
+                    bg="rgba(186,0,191,0.6)"
+                    position="absolute"
+                    zIndex={100}
+                    w="96"
+                    h="28"
+                  >
+                    <Center h="28">
+                      <Text
+                        px="5"
+                        fontSize={14}
+                        textAlign="center"
+                        fontWeight={700}
+                        color="gray.50"
+                      >
+                        {news.title}
                       </Text>
-                    </HStack>
-                  </Box>
+                    </Center>
+                    <Text
+                      px="5"
+                      fontSize={11}
+                      textAlign="center"
+                      fontWeight={700}
+                      color="gray.50"
+                    >
+                      {news.source.name}
+                    </Text>
+                  </VStack>
                 </VStack>
-              </HStack>
-            </Link>
-          </Box>
-        ))}
+              </Link>
+            </Box>
+          ))}
+        </Box>
       </Flex>
     </Box>
   );

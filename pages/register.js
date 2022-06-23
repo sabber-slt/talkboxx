@@ -169,8 +169,8 @@ export default function Home() {
                 <Radio {...register('language')} value="en">
                   English
                 </Radio>
-                <Radio {...register('language')} value="sp">
-                  Spanish
+                <Radio {...register('language')} value="fr">
+                  France
                 </Radio>
                 <Radio {...register('language')} value="ir">
                   Persian

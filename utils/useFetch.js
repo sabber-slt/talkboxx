@@ -6,20 +6,15 @@ export const fetchPublic = async (language) => {
       'X-Hasura-Role': 'public',
     },
     body: JSON.stringify({
-      query: `query MyQuery($language:String) {
-        news(where: {language: {_eq: $language}, publics: {_eq: "true"}}) {
-          category
-          content
+      query: `query MyQuery($language: String) {
+        jsonData(where: {language: {_eq: $language}}, limit: 1) {
           id
-          img
+          info
           language
-          publics
-          shown
-          source
-          title
-          video
+          type
         }
-      }`,
+      }
+      `,
       variables: {
         language,
       },
@@ -60,24 +55,15 @@ export const fetchNews = async (language) => {
       'X-Hasura-Role': 'public',
     },
     body: JSON.stringify({
-      query: `query MyQuery($language: String) {
-        news(where: {language: {_eq: $language}}) {
-          category
-          content
+      query: `query MyQuery($language:String) {
+        jsonData(order_by: {created_at: asc}, limit: 6, where: {language: {_eq: $language}}) {
           id
-          img
+          info
+          type
           language
-          newsid
-          publics
-          shown
-          source
-          title
-          video
-          voices {
-            id
-          }
         }
       }
+      
       `,
       variables: {
         language,
@@ -95,11 +81,12 @@ export const fetchComments = async (newsid) => {
       'X-Hasura-Role': 'public',
     },
     body: JSON.stringify({
-      query: `query MyQuery($newsid:Int) {
-        voice(where: {newsid: {_eq: $newsid}}) {
+      query: `query MyQuery($newsString:String) {
+        voice(where: {newsString: {_eq: $newsString}}) {
           newsid
           id
           like
+          newsString
           users {
             img
             username
@@ -110,7 +97,7 @@ export const fetchComments = async (newsid) => {
       }
       `,
       variables: {
-        newsid,
+        newsString: newsid,
       },
     }),
   });
@@ -125,26 +112,18 @@ export const fetchCategory = async (language, category) => {
       'X-Hasura-Role': 'public',
     },
     body: JSON.stringify({
-      query: `query MyQuery($category: String,$language:String) {
-        news(where: {category: {_eq: $category}, language: {_eq: $language}}) {
-          content
+      query: `query MyQuery($type:String,$language:String) {
+        jsonData(where: {language: {_eq:$language}, type: {_eq: $type}}) {
           id
-          img
-          newsid
-          publics
-          shown
-          source
-          title
-          video
-          voices {
-            id
-          }
+          info
+          language
+          type
         }
       }
       
       `,
       variables: {
-        category,
+        type: category,
         language,
       },
     }),

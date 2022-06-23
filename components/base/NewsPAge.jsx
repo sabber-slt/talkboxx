@@ -5,7 +5,7 @@ const NewsPage = ({ img, title, source, content }) => {
   const { user } = useUser();
   return (
     <Box py="12">
-      <Image alt="" w="full" h="96" src={img} />
+      <Image alt="" w="full" h="80" src={img} />
       <Text
         style={{ direction: user?.language === 'ir' ? 'rtl' : 'ltr' }}
         fontSize={25}

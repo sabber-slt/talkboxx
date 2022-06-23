@@ -1,4 +1,4 @@
-import { Box, Center, Grid, Image, Text, VStack } from '@chakra-ui/react';
+import { Box, Center, Flex, Image, Text, VStack } from '@chakra-ui/react';
 import Link from 'next/link';
 import { useQuery } from 'react-query';
 import useUser from '../../utils/store/useUser';
@@ -14,35 +14,64 @@ const Menu = () => {
   }
 
   return (
-    <Center my="7">
-      <Grid templateColumns="repeat(3, 1fr)" gap={6}>
-        {data.data.default[0].info.map((item) => (
-          <Box key={item.id} h="24" w="24" bg="gray.200" borderRadius={10}>
+    <Flex
+      w="full"
+      h="56"
+      overflowY="hidden"
+      alignItems="center"
+      flexWrap="nowrap"
+      flexDirection="row-reverse"
+      style={{ direction: 'rtl' }}
+      sx={{
+        scrollbarWidth: 'none',
+        '::-webkit-scrollbar': {
+          display: 'none',
+        },
+      }}
+    >
+      <Center>
+        {data.data.default[0].info.map((news) => (
+          <Box key={news.id} display="flex">
             <Link
               href={{
                 pathname: '/category',
                 query: {
-                  id: item.slug,
-                  img: item.cover,
+                  id: news.slug,
+                  img: news.cover,
                 },
               }}
               passhref="true"
             >
-              <a>
-                <Center h="24">
-                  <VStack>
-                    <Image alt="" w="10" h="10" src={item.img} />
-                    <Text fontWeight={600} color="rgba(186,0,191)">
-                      {item.title}
-                    </Text>
-                  </VStack>
+              <VStack
+                mx="3"
+                bg="#BA00BF"
+                overflow="hidden"
+                h="48"
+                w="36"
+                boxShadow="lg"
+                borderRadius={15}
+              >
+                <Center w="24" h="40">
+                  <Image alt="" src={news.img} w="24" h="24" />
                 </Center>
-              </a>
+                <Center>
+                  <Text
+                    p="2"
+                    fontSize={16}
+                    textAlign="center"
+                    color="gray.50"
+                    zIndex={100}
+                    fontWeight={600}
+                  >
+                    {news.title}
+                  </Text>
+                </Center>
+              </VStack>
             </Link>
           </Box>
         ))}
-      </Grid>
-    </Center>
+      </Center>
+    </Flex>
   );
 };
 

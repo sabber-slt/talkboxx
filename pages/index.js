@@ -18,6 +18,7 @@ export default function Home() {
   return (
     <Box>
       <Header language={user ? user.language : 'en'} />
+
       <Menu />
       <News />
     </Box>

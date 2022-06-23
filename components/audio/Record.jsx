@@ -23,9 +23,9 @@ export default function RecorderControls({ recorderState, handlers, newsid }) {
       },
       body: JSON.stringify({
         query: `
-        mutation MyMutation($userid:Int,$newsid:Int,$voice:String) {
-          insert_voice_one(object: {userid:$userid , newsid: $newsid, voice: $voice}) {
-            newsid
+        mutation MyMutation($userid:Int,$newsString:String,$voice:String) {
+          insert_voice_one(object: {userid:$userid , newsString: $newsString, voice: $voice}) {
+            newsString
             userid
             id
             users {
@@ -39,11 +39,12 @@ export default function RecorderControls({ recorderState, handlers, newsid }) {
         variables: {
           userid: parseInt(user.id),
           voice: aud,
-          newsid: newsid,
+          newsString: newsid,
         },
       }),
     });
     const json = await res.json();
+    console.log(json);
     clearAud();
     setShown(false);
     return json;
