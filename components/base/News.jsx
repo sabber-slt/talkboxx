@@ -14,7 +14,7 @@ const News = () => {
   if (isLoading) {
     return <Box></Box>;
   }
-
+  console.log(data);
   // console.log(data.data.jsonData[0].info.sort((a, b) => 0.5 - Math.random()));
 
   return (

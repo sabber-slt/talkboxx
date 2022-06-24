@@ -56,7 +56,7 @@ export const fetchNews = async (language) => {
     },
     body: JSON.stringify({
       query: `query MyQuery($language:String) {
-        jsonData(limit: 2, where: {language: {_eq: $language}}, order_by: {id: desc}) {
+        jsonData(limit: 3, where: {language: {_eq: $language}}, order_by: {id: desc}) {
           id
           info
           type

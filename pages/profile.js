@@ -105,7 +105,7 @@ const Home = () => {
               type="file"
               placeholder="Upload your image"
               label="Image"
-              style={{ backgroundColor: 'white', width: 90 }}
+              style={{ backgroundColor: 'white', width: 95 }}
               name="myFile"
               accept=".jpeg, .png, .jpg"
               onChange={(e) => handleFileUpload(e)}
