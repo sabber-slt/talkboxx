@@ -7,7 +7,7 @@ export const fetchPublic = async (language) => {
     },
     body: JSON.stringify({
       query: `query MyQuery($language: String) {
-        jsonData(where: {language: {_eq: $language}}, limit: 1) {
+        jsonData( where: {language: {_eq: $language}}, limit: 1, order_by: {id: desc}) {
           id
           info
           language
@@ -56,7 +56,7 @@ export const fetchNews = async (language) => {
     },
     body: JSON.stringify({
       query: `query MyQuery($language:String) {
-        jsonData(order_by: {created_at: asc}, limit: 2, where: {language: {_eq: $language}}) {
+        jsonData(limit: 2, where: {language: {_eq: $language}}, order_by: {id: desc}) {
           id
           info
           type
