@@ -56,7 +56,7 @@ export const fetchNews = async (language) => {
     },
     body: JSON.stringify({
       query: `query MyQuery($language:String) {
-        jsonData(order_by: {created_at: asc}, limit: 6, where: {language: {_eq: $language}}) {
+        jsonData(order_by: {created_at: asc}, limit: 2, where: {language: {_eq: $language}}) {
           id
           info
           type
@@ -140,26 +140,14 @@ export const userComment = async (userid) => {
     },
     body: JSON.stringify({
       query: `query MyQuery($userid:Int) {
-        news(where: {voices: {userid: {_eq:$userid }}}) {
-          content
+        voice(where: {userid: {_eq: $userid}}) {
+          like
           id
-          img
-          language
-          newsid
-          publics
-          shown
-          source
-          video
-          title
-          voices {
-            voice
-            like
-            newsid
-            userid
-            id
-          }
+          newsString
+          voice
         }
       }
+      
       
       `,
       variables: {

@@ -6,7 +6,7 @@ import NewsPage from '../components/base/NewsPAge';
 const Home = () => {
   const router = useRouter();
   const { query } = router;
-  console.log(query);
+
   return (
     <Box>
       <NewsPage

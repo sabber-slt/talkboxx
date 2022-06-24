@@ -129,8 +129,8 @@ export default function Home() {
                 {...register('username', {
                   required: true,
                   maxLength: {
-                    value: 8,
-                    message: 'username should not be more than 8 character ',
+                    value: 20,
+                    message: 'username should not be more than 20 character ',
                   },
                 })}
               />

@@ -1,12 +1,12 @@
 /* eslint-disable react/no-children-prop */
 import {
-  AspectRatio,
   Box,
   Button,
   Center,
   FormLabel,
   Input,
   Text,
+  Textarea,
   VStack,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
@@ -24,11 +24,11 @@ export default function Home() {
   const {
     handleSubmit,
     register,
-    formState: { isSubmitting },
+    formState: { errors, isSubmitting },
   } = useForm();
 
   async function onSubmit(values) {
-    const { username } = values;
+    const { name, text } = values;
     const res = await fetch('https://talkbox.hasura.app/v1/graphql', {
       method: 'POST',
       headers: {
@@ -36,26 +36,24 @@ export default function Home() {
         'X-Hasura-Role': 'public',
       },
       body: JSON.stringify({
-        query: `query MyQuery( $username:String) {
-          user(where: {username: {_eq: $username}}) {
-            email
-            img
-            language
-            id
-            password
-            username
+        query: `mutation MyMutation($name:String,$text:String) {
+          insert_contact(objects: {name: $name, text: $text}) {
+            returning {
+              id
+              name
+            }
           }
         }
         `,
         variables: {
-          username: username,
+          name,
+          text,
         },
       }),
     });
     const data = await res.json();
-    if (data.data.user.length !== 0) {
-      setUser(data.data.user[0]);
-      router.push('/');
+    if (data.data) {
+      router.push('/profile');
     } else {
       setErr('Username or password is incorrect');
     }
@@ -63,29 +61,7 @@ export default function Home() {
   }
 
   return (
-    <Box
-      w="100%"
-      h="100vh"
-      overflow="hidden"
-      position="relative"
-      bg="purple.800"
-    >
-      <AspectRatio
-        position="absolute"
-        w="full"
-        objectFit="cover"
-        maxH={['100vh', '2xl']}
-        zIndex={0}
-        opacity={0.7}
-        ratio={[1 / 4, 1, 1, 1]}
-      >
-        <video autoPlay loop muted playsInline>
-          <source
-            src="https://res.cloudinary.com/dupfwlkgb/video/upload/v1655379143/video_4_qwios3.mp4"
-            type="video/mp4"
-          />
-        </video>
-      </AspectRatio>
+    <Box w="100%" h="100vh" overflow="hidden" position="relative" bg="#BA00BF">
       <Box
         zIndex={100}
         h="full"
@@ -96,7 +72,7 @@ export default function Home() {
         alignItems="center"
       >
         <Center
-          bg="rgba(240, 240, 240,0.8)"
+          bg="rgba(240, 240, 240,0.9)"
           borderRadius={10}
           p="10"
           zIndex={100}
@@ -106,7 +82,7 @@ export default function Home() {
           <Text color="rgba(186,0,191,0.7)">{err}</Text>
           <form onSubmit={handleSubmit(onSubmit)}>
             <FormLabel htmlFor="username" mt="5">
-              username
+              name
             </FormLabel>
             <Input
               width="auto"
@@ -114,38 +90,29 @@ export default function Home() {
               color="gray.600"
               borderColor="rgba(186,0,191,0.7)"
               type="text"
-              {...register('username', { required: true })}
+              {...register('name', { required: true })}
             />
             <FormLabel htmlFor="email" mt="5">
-              password
+              text
             </FormLabel>
-            <Input
-              width="auto"
+            <Textarea
+              placeholder=""
               spacing={3}
               color="gray.600"
               borderColor="rgba(186,0,191,0.7)"
-              type="password"
-              {...register('password', { required: true })}
+              {...register('text', { required: true })}
             />
 
             <Center>
               <VStack>
                 <Button
-                  type="submit"
                   isLoading={isSubmitting}
-                  colorScheme="gray"
+                  type="submit"
+                  colorScheme="rgba(186,0,191,0.7)"
                   variant="outline"
                   mt="5"
                 >
                   Submit
-                </Button>
-                <Button
-                  colorScheme="gray"
-                  variant="outline"
-                  mt="8"
-                  onClick={() => router.push('/register')}
-                >
-                  do not have an account?
                 </Button>
               </VStack>
             </Center>

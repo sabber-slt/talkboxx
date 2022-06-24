@@ -33,10 +33,16 @@ const News = () => {
                         pathname: '/news',
                         query: {
                           id: item.title,
-                          img: item.urlToImage,
+                          img:
+                            user?.language !== 'ir'
+                              ? item.urlToImage
+                              : item.thumbnail,
                           title: item.title,
                           content: item.content,
-                          source: item.source.name,
+                          source:
+                            user?.language !== 'ir'
+                              ? item.source.name
+                              : item.categories[0],
                         },
                       }}
                       passhref="true"
@@ -57,7 +63,11 @@ const News = () => {
                             objectFit="cover"
                             // objectPosition="center"
                             alt=""
-                            src={item.urlToImage}
+                            src={
+                              user?.language !== 'ir'
+                                ? item.urlToImage
+                                : item.thumbnail
+                            }
                           />
                         </Box>
                         <VStack
@@ -65,9 +75,9 @@ const News = () => {
                           position="absolute"
                           zIndex={100}
                           w="96"
-                          h="28"
+                          h="36"
                         >
-                          <Center h="28">
+                          <Center h="36">
                             <Text
                               px="5"
                               fontSize={14}
@@ -79,13 +89,15 @@ const News = () => {
                             </Text>
                           </Center>
                           <Text
-                            px="5"
+                            p="2"
                             fontSize={11}
                             textAlign="center"
                             fontWeight={700}
                             color="gray.50"
                           >
-                            {item.source.name}
+                            {user?.language !== 'ir'
+                              ? item.source.name
+                              : item.categories[0]}
                           </Text>
                         </VStack>
                       </VStack>

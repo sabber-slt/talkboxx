@@ -16,16 +16,16 @@ const Home = () => {
   if (isLoading) {
     return <Box>Loading...</Box>;
   }
-  console.log(data);
+
   return (
     <Box py="16">
       <Box w="full" h="80" position="relative">
-        <Image alt="" src={query.img} layout="fill" priority={true} />
+        <Image alt="" src={query.img} w="full" h="80" />
       </Box>
 
       <Flex w="full" h="full" flexDirection="column" alignItems="center">
         <Box>
-          {data.data.jsonData[0].info.map((news, index) => (
+          {data.data.jsonData[0]?.info.map((news, index) => (
             <Box key={index}>
               <Link
                 href={{
@@ -35,7 +35,10 @@ const Home = () => {
                     img: news.urlToImage,
                     title: news.title,
                     content: news.content,
-                    source: news.source.name,
+                    source:
+                      user?.language !== 'ir'
+                        ? news.source.name
+                        : news.categories[0],
                   },
                 }}
                 passhref="true"
@@ -56,7 +59,11 @@ const Home = () => {
                       objectFit="cover"
                       // objectPosition="center"
                       alt=""
-                      src={news.urlToImage}
+                      src={
+                        user?.language !== 'ir'
+                          ? news.urlToImage
+                          : news.thumbnail
+                      }
                     />
                   </Box>
                   <VStack
@@ -84,7 +91,9 @@ const Home = () => {
                       fontWeight={700}
                       color="gray.50"
                     >
-                      {news.source.name}
+                      {user?.language !== 'ir'
+                        ? news.source.name
+                        : news.categories[0]}
                     </Text>
                   </VStack>
                 </VStack>

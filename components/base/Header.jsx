@@ -31,43 +31,64 @@ const Header = ({ language }) => {
       }}
     >
       <Center>
-        {data.data.jsonData[0].info.map((news, index) => (
+        {data.data.jsonData[0]?.info.map((news, index) => (
           <Box key={index} display="flex">
             <Link
               href={{
                 pathname: '/news',
                 query: {
-                  id: news.id,
-                  img: news.img,
+                  id: news.title,
+                  img: language !== 'ir' ? news.urlToImage : news.thumbnail,
                   title: news.title,
                   content: news.content,
-                  source: news.source,
+                  source:
+                    language !== 'ir' ? news.source.name : news.categories[0],
                 },
               }}
               passhref="true"
             >
               <VStack
-                mx="3"
-                bg="#BA00BF"
+                justifyContent="flex-end"
+                m="3"
+                borderRadius="lg"
+                bg="gray.200"
                 overflow="hidden"
-                h="64"
-                boxShadow="xl"
+                h="72"
+                w="72"
               >
-                <Box position="relative" zIndex={0} w="44" h="36">
-                  <Image alt="" src={news.urlToImage} w="44" h="36" />
+                <Box position="relative" w="72" h="72">
+                  <Image
+                    position="absolute"
+                    w="72"
+                    h="72"
+                    objectFit="cover"
+                    zIndex={0}
+                    alt=""
+                    src={language !== 'ir' ? news.urlToImage : news.thumbnail}
+                  />
                 </Box>
-                <Center style={{ direction: 'ltr' }} h="40" w="44">
+                <VStack zIndex={100} bg="rgba(186,0,191,0.6)" w="72" h="36">
+                  <Center h="36">
+                    <Text
+                      p="2"
+                      fontSize={14}
+                      textAlign="center"
+                      fontWeight={700}
+                      color="gray.50"
+                    >
+                      {news.title}
+                    </Text>
+                  </Center>
                   <Text
-                    p="2"
-                    fontSize={12}
+                    pb="2"
+                    fontSize={11}
                     textAlign="center"
+                    fontWeight={700}
                     color="gray.50"
-                    zIndex={100}
-                    fontWeight={600}
                   >
-                    {news.title.slice(0, 80)}...
+                    {language !== 'ir' ? news.source.name : news.categories[0]}
                   </Text>
-                </Center>
+                </VStack>
               </VStack>
             </Link>
           </Box>
