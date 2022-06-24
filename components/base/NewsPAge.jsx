@@ -34,7 +34,7 @@ const NewsPage = ({ img, title, source, content }) => {
         py="5"
         color="gray.600"
       >
-        {content.replace(/<[^>]+>/g, '')}
+        {content?.replace(/<[^>]+>/g, '')}
       </Text>
     </Box>
   );
