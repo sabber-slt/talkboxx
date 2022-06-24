@@ -69,7 +69,7 @@ const Header = ({ language }) => {
                       src={language !== 'ir' ? news.urlToImage : news.thumbnail}
                     />
                   </Box>
-                  <VStack zIndex={100} bg="rgba(186,0,191,0.6)" w="72" h="36">
+                  <VStack zIndex={100} bg="rgba(186,0,191,0.6)" w="72" h="28">
                     <Center h="36">
                       <Text
                         p="2"
@@ -83,9 +83,9 @@ const Header = ({ language }) => {
                     </Center>
                     <Text
                       pb="2"
-                      fontSize={11}
+                      fontSize={12}
                       textAlign="center"
-                      fontWeight={700}
+                      fontWeight={600}
                       color="gray.50"
                     >
                       {language !== 'ir'

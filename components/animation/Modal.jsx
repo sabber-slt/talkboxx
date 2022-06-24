@@ -29,16 +29,12 @@ export default function Modal({ newsid, title }) {
       <Button
         position="fixed"
         bottom="20"
-        h="20"
-        w="20"
-        bg="pink.100"
-        borderRadius={100}
-        right="5"
-        shadow="lg"
+        right="0"
+        bg="white"
         onClick={() => handleClick('full')}
         m={4}
       >
-        <Image alt="" src="/image/micon.svg" w="20" h="20" />
+        <Image alt="" src="/image/talkk.png" borderRadius={100} w="32" h="32" />
       </Button>
 
       <Drawer onClose={onClose} isOpen={isOpen} size={size}>

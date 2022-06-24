@@ -75,12 +75,13 @@ const News = () => {
                           position="absolute"
                           zIndex={100}
                           w="96"
-                          h="36"
+                          h={item.title.length > 80 ? '32' : '24'}
                         >
-                          <Center h="36">
+                          <Center h={item.title.length > 80 ? '32' : '24'}>
                             <Text
                               px="5"
-                              fontSize={14}
+                              pt="1"
+                              fontSize={user?.language !== 'ir' ? 16 : 18}
                               textAlign="center"
                               fontWeight={700}
                               color="gray.50"
@@ -90,7 +91,7 @@ const News = () => {
                           </Center>
                           <Text
                             p="2"
-                            fontSize={11}
+                            fontSize={user?.language !== 'ir' ? 11 : 14}
                             textAlign="center"
                             fontWeight={700}
                             color="gray.50"

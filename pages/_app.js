@@ -1,5 +1,4 @@
-import { ChakraProvider } from '@chakra-ui/react';
-import styled from '@emotion/styled';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import '@fontsource/martel';
 import Head from 'next/head';
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
@@ -7,9 +6,12 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import Layout from '../components/Layout';
 import '../styles/globals.css';
 
-const AppContainer = styled.div`
-  font-family: 'Martel', serif;
-`;
+const theme = extendTheme({
+  fonts: {
+    heading: 'Rubik',
+    body: 'Raleway',
+  },
+});
 
 const reactQueryClient = new QueryClient();
 
@@ -36,12 +38,10 @@ function MyApp({ Component, pageProps }) {
       <QueryClientProvider client={reactQueryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
         <Hydrate state={pageProps.dehydrateState}>
-          <ChakraProvider>
-            <AppContainer>
-              <Layout>
-                <Component {...pageProps} />
-              </Layout>
-            </AppContainer>
+          <ChakraProvider theme={theme}>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
           </ChakraProvider>
         </Hydrate>
       </QueryClientProvider>
