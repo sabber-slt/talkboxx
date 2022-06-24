@@ -5,12 +5,12 @@ const Layout = ({ children }) => {
   return (
     <>
       <Box>
-        <Center position="fixed" w="full" h="16" bg="white" zIndex={110}>
+        <Center position="fixed" w="full" h="16" bg="gray.100" zIndex={110}>
           <Image
             alt=""
             src="/icons/icon-512x512.png"
             boxSize="16"
-            bg="gray.200"
+            bg="gray.100"
           />
         </Center>
         {children}
