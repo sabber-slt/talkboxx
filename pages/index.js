@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import Header from '../components/base/Header';
 import Menu from '../components/base/Menu';
 import News from '../components/base/News';
+import Search from '../components/base/Search';
 import useUser from '../utils/store/useUser';
 
 export default function Home() {
@@ -18,8 +19,8 @@ export default function Home() {
   return (
     <Box>
       <Header language={user ? user.language : 'en'} />
-
       <Menu />
+      <Search />
       <News />
     </Box>
   );

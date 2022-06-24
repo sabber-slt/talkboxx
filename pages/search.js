@@ -1,26 +1,25 @@
 import { Box, Center, Flex, Image, Text, VStack } from '@chakra-ui/react';
 import Link from 'next/link';
-
+import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
-import useUser from '../../utils/store/useUser';
-import { fetchEn, fetchFr, fetchIr } from '../../utils/useFetch';
+import useUser from '../utils/store/useUser';
+import { enSearch, faSearch, frSearch } from '../utils/useMution';
 
-const News = () => {
+const Home = () => {
+  const router = useRouter();
+  const { query } = router;
   const { user } = useUser();
-  const search =
-    user?.language === 'en'
-      ? fetchEn()
-      : user?.language === 'ir'
-      ? fetchIr()
-      : fetchFr();
-
-  const { data, isLoading } = useQuery('news', () => search);
-
+  const se =
+    user?.language === 'ir'
+      ? faSearch(query.id)
+      : user?.language === 'en'
+      ? enSearch(query.id)
+      : frSearch(query.id);
+  const { data, isLoading } = useQuery('search', () => se);
   if (isLoading) {
     return <Box></Box>;
   }
   console.log(data);
-
   const arr =
     user?.language === 'ir'
       ? data?.data?.faJson
@@ -28,10 +27,8 @@ const News = () => {
       ? data?.data?.enJson
       : data?.data?.frJson;
 
-  // console.log(data.data.jsonData[0].info.sort((a, b) => 0.5 - Math.random()));
-
   return (
-    <Flex w="full" h="full" flexDirection="column" my="16" alignItems="center">
+    <Flex w="full" h="full" flexDirection="column" py="16" alignItems="center">
       <Box>
         {arr.map((item) => (
           <Box key={item.id}>
@@ -43,7 +40,6 @@ const News = () => {
                   img:
                     user?.language !== 'ir' ? item.urlToImage : item.thumbnail,
                   title: item.title,
-                  url: item.url ? item.url : '',
                   content: item.description,
                   source:
                     user?.language !== 'ir'
@@ -114,4 +110,4 @@ const News = () => {
   );
 };
 
-export default News;
+export default Home;

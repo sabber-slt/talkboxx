@@ -1,54 +1,24 @@
 import { Box, Center, Flex, Image, Text, VStack } from '@chakra-ui/react';
 import Link from 'next/link';
+import useStore from '../utils/store/useStore';
+import useUser from '../utils/store/useUser';
 
-import { useQuery } from 'react-query';
-import useUser from '../../utils/store/useUser';
-import { fetchEn, fetchFr, fetchIr } from '../../utils/useFetch';
-
-const News = () => {
+const Home = () => {
   const { user } = useUser();
-  const search =
-    user?.language === 'en'
-      ? fetchEn()
-      : user?.language === 'ir'
-      ? fetchIr()
-      : fetchFr();
-
-  const { data, isLoading } = useQuery('news', () => search);
-
-  if (isLoading) {
-    return <Box></Box>;
-  }
-  console.log(data);
-
-  const arr =
-    user?.language === 'ir'
-      ? data?.data?.faJson
-      : user?.language === 'en'
-      ? data?.data?.enJson
-      : data?.data?.frJson;
-
-  // console.log(data.data.jsonData[0].info.sort((a, b) => 0.5 - Math.random()));
-
+  const { news } = useStore();
   return (
-    <Flex w="full" h="full" flexDirection="column" my="16" alignItems="center">
+    <Flex w="full" h="full" flexDirection="column" py="16" alignItems="center">
       <Box>
-        {arr.map((item) => (
-          <Box key={item.id}>
+        {news.map((item, index) => (
+          <Box key={index}>
             <Link
               href={{
                 pathname: '/news',
                 query: {
                   id: item.title,
-                  img:
-                    user?.language !== 'ir' ? item.urlToImage : item.thumbnail,
-                  title: item.title,
-                  url: item.url ? item.url : '',
-                  content: item.description,
-                  source:
-                    user?.language !== 'ir'
-                      ? item.source.name
-                      : item.categories[0],
+                  img: item.img,
+                  content: item.content,
+                  source: item.source,
                 },
               }}
               passhref="true"
@@ -69,9 +39,7 @@ const News = () => {
                     objectFit="cover"
                     // objectPosition="center"
                     alt=""
-                    src={
-                      user?.language !== 'ir' ? item.urlToImage : item.thumbnail
-                    }
+                    src={item?.img}
                   />
                 </Box>
                 <VStack
@@ -100,9 +68,7 @@ const News = () => {
                     fontWeight={700}
                     color="gray.50"
                   >
-                    {user?.language !== 'ir'
-                      ? item.source.name
-                      : item.categories[0]}
+                    {item.source}
                   </Text>
                 </VStack>
               </VStack>
@@ -114,4 +80,4 @@ const News = () => {
   );
 };
 
-export default News;
+export default Home;

@@ -147,6 +147,22 @@ const Home = () => {
             height="20"
             width="80"
             border="2px"
+            bg="whiteAlpha.100"
+            borderColor="gray.100"
+            color="purple.700"
+            my="3"
+            onClick={() => {
+              router.push('/myNews');
+            }}
+            leftIcon={<ExternalLinkIcon w="7" h="7" />}
+          >
+            my news
+          </Button>
+          <Button
+            size="lg"
+            height="20"
+            width="80"
+            border="2px"
             color="purple.700"
             bg="whiteAlpha.100"
             borderColor="gray.100"

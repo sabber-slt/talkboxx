@@ -3,19 +3,29 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 import useUser from '../utils/store/useUser';
-import { fetchCategory } from '../utils/useFetch';
+import { fetchEnCat, fetchFrCat, fetchIrCat } from '../utils/useFetch';
 
 const Home = () => {
   const { user } = useUser();
   const router = useRouter();
   const { query } = router;
-  const { data, isLoading } = useQuery(
-    ['category', user?.language, query.id],
-    () => fetchCategory(user?.language, query.id)
-  );
+  const search =
+    user?.language === 'en'
+      ? fetchEnCat(query.id)
+      : user?.language === 'ir'
+      ? fetchIrCat(query.id)
+      : fetchFrCat(query.id);
+  const { data, isLoading } = useQuery(['category', query.id], () => search);
   if (isLoading) {
     return <Box>Loading...</Box>;
   }
+  console.log(data);
+  const arr =
+    user?.language === 'ir'
+      ? data?.data?.faJson
+      : user?.language === 'en'
+      ? data?.data?.enJson
+      : data?.data?.frJson;
 
   return (
     <Box py="16">
@@ -25,20 +35,23 @@ const Home = () => {
 
       <Flex w="full" h="full" flexDirection="column" alignItems="center">
         <Box>
-          {data.data.jsonData[0]?.info.map((news, index) => (
-            <Box key={index}>
+          {arr.map((item) => (
+            <Box key={item.id}>
               <Link
                 href={{
                   pathname: '/news',
                   query: {
-                    id: news.title,
-                    img: news.urlToImage,
-                    title: news.title,
-                    content: news.content,
+                    id: item.title,
+                    img:
+                      user?.language !== 'ir'
+                        ? item.urlToImage
+                        : item.thumbnail,
+                    title: item.title,
+                    content: item.description,
                     source:
                       user?.language !== 'ir'
-                        ? news.source.name
-                        : news.categories[0],
+                        ? item.source.name
+                        : item.categories[0],
                   },
                 }}
                 passhref="true"
@@ -61,8 +74,8 @@ const Home = () => {
                       alt=""
                       src={
                         user?.language !== 'ir'
-                          ? news.urlToImage
-                          : news.thumbnail
+                          ? item.urlToImage
+                          : item.thumbnail
                       }
                     />
                   </Box>
@@ -71,29 +84,30 @@ const Home = () => {
                     position="absolute"
                     zIndex={100}
                     w="96"
-                    h="28"
+                    h={item.title.length > 80 ? '32' : '24'}
                   >
-                    <Center h="28">
+                    <Center h={item.title.length > 80 ? '32' : '24'}>
                       <Text
                         px="5"
-                        fontSize={14}
+                        pt="1"
+                        fontSize={user?.language !== 'ir' ? 16 : 18}
                         textAlign="center"
                         fontWeight={700}
                         color="gray.50"
                       >
-                        {news.title}
+                        {item.title}
                       </Text>
                     </Center>
                     <Text
-                      px="5"
-                      fontSize={11}
+                      p="2"
+                      fontSize={user?.language !== 'ir' ? 11 : 14}
                       textAlign="center"
                       fontWeight={700}
                       color="gray.50"
                     >
                       {user?.language !== 'ir'
-                        ? news.source.name
-                        : news.categories[0]}
+                        ? item.source.name
+                        : item.categories[0]}
                     </Text>
                   </VStack>
                 </VStack>
