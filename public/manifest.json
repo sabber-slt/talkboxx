@@ -32,9 +32,9 @@
       ]
     }
   ],
-  "description": "talkbox",
-  "name": "talkox",
-  "short_name": "Talkbox",
+  "description": "TalkBox",
+  "name": "TalkBox",
+  "short_name": "TalkBox",
   "theme_color": "#EDF2F7",
   "background_color": "#EDF2F7",
   "display": "standalone",
