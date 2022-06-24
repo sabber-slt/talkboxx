@@ -38,7 +38,7 @@ const News = () => {
                               ? item.urlToImage
                               : item.thumbnail,
                           title: item.title,
-                          content: item.content,
+                          content: item.description,
                           source:
                             user?.language !== 'ir'
                               ? item.source.name
