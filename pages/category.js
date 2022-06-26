@@ -35,7 +35,7 @@ const Home = () => {
 
       <Flex w="full" h="full" flexDirection="column" alignItems="center">
         <Box>
-          {arr.map((item) => (
+          {arr?.map((item) => (
             <Box key={item.id}>
               <Link
                 href={{

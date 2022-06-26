@@ -192,7 +192,7 @@ export const fetchEn = async () => {
     },
     body: JSON.stringify({
       query: `query MyQuery {
-        enJson(distinct_on: id) {
+        enJson(limit: 30,order_by: {id: desc}) {
           author
           cat
           content
@@ -220,7 +220,7 @@ export const fetchFr = async () => {
     },
     body: JSON.stringify({
       query: `query MyQuery {
-        frJson(distinct_on: id) {
+        frJson(limit: 30,order_by: {id: desc}) {
           author
           cat
           content
@@ -248,7 +248,7 @@ export const fetchIr = async () => {
     },
     body: JSON.stringify({
       query: `query MyQuery {
-        faJson(distinct_on: id) {
+        faJson(limit: 30,order_by: {id: desc}) {
           author
           categories
           content

@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Image, Text, VStack } from '@chakra-ui/react';
+import { Box, Center, Flex, Grid, Image, Text, VStack } from '@chakra-ui/react';
 import Link from 'next/link';
 
 import { useQuery } from 'react-query';
@@ -19,7 +19,7 @@ const Header = ({ language }) => {
       ? data?.data?.enJson
       : data?.data?.frJson;
 
-  const slice = arr.slice(0, 5);
+  const slice = arr?.slice(16, 20);
 
   return (
     <Flex
@@ -38,8 +38,14 @@ const Header = ({ language }) => {
         },
       }}
     >
-      <Center>
-        {slice.map((news, index) => (
+      {/* <Center w="full"> */}
+      <Grid
+        ml={['5', '10vw']}
+        templateColumns={['repeat(4,  1fr)', 'repeat(4,  1fr)']}
+        gap={4}
+      >
+        {/* <Center> */}
+        {slice?.map((news, index) => (
           <Box key={index} display="flex">
             <Link
               href={{
@@ -57,7 +63,6 @@ const Header = ({ language }) => {
             >
               <VStack
                 justifyContent="flex-end"
-                m="3"
                 borderRadius="lg"
                 bg="gray.200"
                 overflow="hidden"
@@ -101,7 +106,9 @@ const Header = ({ language }) => {
             </Link>
           </Box>
         ))}
-      </Center>
+        {/* </Center> */}
+      </Grid>
+      {/* </Center> */}
     </Flex>
   );
 };

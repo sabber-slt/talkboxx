@@ -5,7 +5,14 @@ const Layout = ({ children }) => {
   return (
     <>
       <Box>
-        <Center position="fixed" w="full" h="16" bg="gray.100" zIndex={110}>
+        <Center
+          display={['flex', 'none']}
+          position="fixed"
+          w="full"
+          h="16"
+          bg="gray.100"
+          zIndex={110}
+        >
           <Image
             alt=""
             src="/icons/icon-512x512.png"
@@ -18,6 +25,7 @@ const Layout = ({ children }) => {
           <Center
             bottom={0}
             position="fixed"
+            display={['flex', 'none']}
             w="full"
             h="14"
             bg="gray.100"

@@ -11,6 +11,7 @@ import {
   Text,
   useDisclosure,
 } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import { useState } from 'react';
 import AudioScreen from '../audio/AusioScreen';
 import Voices from '../audio/Voices';
@@ -27,6 +28,9 @@ export default function Modal({ newsid, title }) {
   return (
     <>
       <Button
+        as={motion.button}
+        initial={{ scale: 1 }}
+        whileHover={{ scale: 0.7 }}
         position="fixed"
         bottom="20"
         right="0"
@@ -34,7 +38,14 @@ export default function Modal({ newsid, title }) {
         onClick={() => handleClick('full')}
         m={4}
       >
-        <Image alt="" src="/image/talkk.png" borderRadius={100} w="32" h="32" />
+        <Image
+          alt=""
+          bg="white"
+          src="/image/talkk.png"
+          borderRadius={100}
+          w="32"
+          h="32"
+        />
       </Button>
 
       <Drawer onClose={onClose} isOpen={isOpen} size={size}>

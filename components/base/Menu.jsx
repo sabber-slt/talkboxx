@@ -15,6 +15,7 @@ const Menu = () => {
 
   return (
     <Flex
+      display={['flex', 'none']}
       w="full"
       h="56"
       overflowY="hidden"
@@ -30,7 +31,7 @@ const Menu = () => {
       }}
     >
       <Center>
-        {data.data.default[0].info.map((news) => (
+        {data?.data?.default[0].info.map((news) => (
           <Box key={news.id} display="flex">
             <Link
               href={{

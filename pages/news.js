@@ -1,5 +1,6 @@
 import { SmallAddIcon } from '@chakra-ui/icons';
 import { Box, Button } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Modal from '../components/animation/Modal';
@@ -36,6 +37,9 @@ const Home = () => {
       />
       {xx && (
         <Button
+          as={motion.button}
+          initial={{ scale: 0.9 }}
+          whileHover={{ scale: 1.1 }}
           position="fixed"
           top="24"
           right="10"

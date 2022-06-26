@@ -1,4 +1,5 @@
-import { Box, Center, Flex, Image, Text, VStack } from '@chakra-ui/react';
+import { Box, Center, Flex, Grid, Image, Text, VStack } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 import { useQuery } from 'react-query';
@@ -31,10 +32,23 @@ const News = () => {
   // console.log(data.data.jsonData[0].info.sort((a, b) => 0.5 - Math.random()));
 
   return (
-    <Flex w="full" h="full" flexDirection="column" my="16" alignItems="center">
-      <Box>
-        {arr.map((item) => (
-          <Box key={item.id}>
+    <Flex
+      w="full"
+      h="full"
+      flexDirection="column"
+      mt="5"
+      mb="16"
+      alignItems="center"
+    >
+      <Grid templateColumns={['repeat(1,  1fr)', 'repeat(3,  1fr)']} gap={4}>
+        {arr?.map((item) => (
+          <Box
+            key={item.id}
+            as={motion.div}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 2 }}
+          >
             <Link
               href={{
                 pathname: '/news',
@@ -109,7 +123,7 @@ const News = () => {
             </Link>
           </Box>
         ))}
-      </Box>
+      </Grid>
     </Flex>
   );
 };
