@@ -56,7 +56,7 @@ export default function RecorderControls({ recorderState, handlers, newsid }) {
   };
   return (
     <>
-      <Center display="flex" flexDirection="column" w="full">
+      <Center display="flex" py="5" flexDirection="column" w="full">
         <Center my="3">
           {aud !== null && (
             <Button
@@ -91,7 +91,7 @@ export default function RecorderControls({ recorderState, handlers, newsid }) {
                 bg="gray.100"
                 borderRadius={100}
               >
-                <Image alt="" src={'/image/play.svg'} width={40} height={40} />
+                <Image alt="" src={'/image/play.svg'} width={37} height={37} />
               </Center>
 
               <div>
@@ -115,8 +115,8 @@ export default function RecorderControls({ recorderState, handlers, newsid }) {
                     src={
                       initRecording ? '/image/micoff.svg' : '/image/micon.svg'
                     }
-                    width={60}
-                    height={60}
+                    width={55}
+                    height={55}
                   />
                 </Center>
               </div>

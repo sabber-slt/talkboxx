@@ -36,9 +36,9 @@ const NewsPage = ({ img, title, source, content, url }) => {
       >
         {content?.replace(/<[^>]+>/g, '')}
       </Text>
-      <Box m="4">
+      <Box m="4" py="8">
         <Link href={url}>
-          <Text>news link</Text>
+          <Text as="u">news link</Text>
         </Link>
       </Box>
     </Box>

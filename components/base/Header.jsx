@@ -106,9 +106,7 @@ const Header = ({ language }) => {
             </Link>
           </Box>
         ))}
-        {/* </Center> */}
       </Grid>
-      {/* </Center> */}
     </Flex>
   );
 };

@@ -34,6 +34,7 @@ export default function Modal({ newsid, title }) {
         position="fixed"
         bottom="20"
         right="0"
+        opacity={0.7}
         bg="white"
         onClick={() => handleClick('full')}
         m={4}
