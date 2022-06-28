@@ -114,9 +114,7 @@ const News = () => {
                     fontWeight={700}
                     color="gray.50"
                   >
-                    {user?.language !== 'ir'
-                      ? item.source.name
-                      : item.categories[0]}
+                    {user?.language !== 'ir' ? item.source : item.categories[0]}
                   </Text>
                 </VStack>
               </VStack>

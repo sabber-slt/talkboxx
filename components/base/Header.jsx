@@ -99,7 +99,7 @@ const Header = ({ language }) => {
                     fontWeight={600}
                     color="gray.50"
                   >
-                    {language !== 'ir' ? news.source.name : news.categories[0]}
+                    {language !== 'ir' ? news.source : news.categories[0]}
                   </Text>
                 </VStack>
               </VStack>
