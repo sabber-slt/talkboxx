@@ -47,7 +47,7 @@ const News = () => {
             as={motion.div}
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 2 }}
+            transition="0.7s linear "
           >
             <Link
               href={{

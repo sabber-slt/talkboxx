@@ -1,14 +1,6 @@
 /* eslint-disable no-undef */
 import { ExternalLinkIcon } from '@chakra-ui/icons';
-import {
-  Box,
-  Button,
-  Center,
-  Flex,
-  Image,
-  Text,
-  VStack,
-} from '@chakra-ui/react';
+import { Box, Button, Center, Grid, Image, VStack } from '@chakra-ui/react';
 
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -91,48 +83,63 @@ const Home = () => {
 
   return (
     <Box
-      py="16"
+      pt="16"
       // h="full"
-      bgGradient="linear(to-t, rgba(186,0,191,0.3), #BA00BF)"
+      bg="#BA00BF"
     >
-      <Center>
-        <Image alt="" src={user?.img || ''} borderRadius={15} w={150} h={150} />
+      <Center display="flex" flexDirection="column" bg="#BA00BF" py="10">
+        <Center bg="white" borderRadius={100} boxShadow="2xl">
+          <Image
+            alt=""
+            src={user?.img || ''}
+            borderRadius={15}
+            w={150}
+            h={150}
+          />
+        </Center>
+        <form onSubmit={handleSubmit}>
+          <VStack mt="4">
+            <Center w="28">
+              <input
+                type="file"
+                placeholder="Upload your image"
+                label="Image"
+                style={{ backgroundColor: 'white', width: 95 }}
+                name="myFile"
+                accept=".jpeg, .png, .jpg"
+                onChange={(e) => handleFileUpload(e)}
+              />
+            </Center>
+            {postImage !== '' && (
+              <Button type="submit" colorScheme="purple">
+                {loading ? 'Loading...' : 'Upload'}
+              </Button>
+            )}
+          </VStack>
+        </form>
       </Center>
-      <form onSubmit={handleSubmit}>
-        <VStack mt="4">
-          <Center w="28">
-            <input
-              type="file"
-              placeholder="Upload your image"
-              label="Image"
-              style={{ backgroundColor: 'white', width: 95 }}
-              name="myFile"
-              accept=".jpeg, .png, .jpg"
-              onChange={(e) => handleFileUpload(e)}
-            />
-          </Center>
-          {postImage !== '' && (
-            <Button type="submit" colorScheme="purple">
-              {loading ? 'Loading...' : 'Upload'}
-            </Button>
-          )}
-        </VStack>
-      </form>
 
-      <Flex display="flex" flexDirection="column">
-        <VStack h="full" spacing={8}>
-          <Text py="16" fontSize="2xl" fontWeight="bold" color="white">
-            {user?.username}
-          </Text>
+      <Center
+        bg="white"
+        borderTopRadius={30}
+        display="flex"
+        flexDirection="column"
+        boxShadow="2xl"
+      >
+        <Grid
+          templateColumns={['repeat(2,  1fr)', 'repeat(4,  1fr)']}
+          gap={3}
+          h="full"
+          py="16"
+        >
           <Button
             size="lg"
-            height="20"
-            width="80"
+            height="40"
+            width="40"
             border="2px"
             bg="whiteAlpha.100"
-            borderColor="gray.100"
-            color="purple.700"
-            my="3"
+            borderColor="#BA00BF"
+            color="#BA00BF"
             onClick={() => {
               clearUser();
 
@@ -144,13 +151,12 @@ const Home = () => {
           </Button>
           <Button
             size="lg"
-            height="20"
-            width="80"
+            height="40"
+            width="40"
             border="2px"
             bg="whiteAlpha.100"
-            borderColor="gray.100"
-            color="purple.700"
-            my="3"
+            borderColor="#BA00BF"
+            color="#BA00BF"
             onClick={() => {
               router.push('/myNews');
             }}
@@ -160,29 +166,27 @@ const Home = () => {
           </Button>
           <Button
             size="lg"
-            height="20"
-            width="80"
+            height="40"
+            width="40"
             border="2px"
-            color="purple.700"
+            color="#BA00BF"
             bg="whiteAlpha.100"
-            borderColor="gray.100"
-            my="3"
+            borderColor="#BA00BF"
             onClick={() => {
               router.push('/comments');
             }}
             leftIcon={<ExternalLinkIcon w="7" h="7" />}
           >
-            your voice
+            my voice
           </Button>
           <Button
             size="lg"
-            height="20"
-            width="80"
+            height="40"
+            width="40"
             border="2px"
             bg="whiteAlpha.100"
-            borderColor="gray.100"
-            color="purple.700"
-            my="5"
+            borderColor="#BA00BF"
+            color="#BA00BF"
             onClick={() => {
               router.push('/contact');
             }}
@@ -190,10 +194,10 @@ const Home = () => {
           >
             contact us
           </Button>
-          <Button
+          {/* <Button
             size="lg"
-            height="20"
-            width="80"
+            height="40"
+            width="40"
             border="2px"
             bg="whiteAlpha.100"
             borderColor="gray.100"
@@ -205,9 +209,9 @@ const Home = () => {
             leftIcon={<ExternalLinkIcon w="7" h="7" />}
           >
             about Talk Box
-          </Button>
-        </VStack>
-      </Flex>
+          </Button> */}
+        </Grid>
+      </Center>
     </Box>
   );
 };

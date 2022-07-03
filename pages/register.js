@@ -186,6 +186,8 @@ export default function Home() {
                   colorScheme="gray"
                   variant="outline"
                   mt="5"
+                  w="40"
+                  borderColor="rgba(186,0,191,0.9)"
                 >
                   Submit
                 </Button>
@@ -193,6 +195,8 @@ export default function Home() {
                   colorScheme="gray"
                   variant="outline"
                   mt="8"
+                  borderColor="rgba(186,0,191,0.9)"
+                  w="40"
                   onClick={() => router.push('/login')}
                 >
                   have an account?

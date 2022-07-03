@@ -45,7 +45,7 @@ const Menu = () => {
             >
               <VStack
                 mx="3"
-                bg="#BA00BF"
+                bgGradient="linear(to-tr, #BA00BF,rgba(186,0,191,0.5), #BA00BF)"
                 overflow="hidden"
                 h="48"
                 w="36"

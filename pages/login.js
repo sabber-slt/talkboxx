@@ -136,13 +136,17 @@ export default function Home() {
                   colorScheme="gray"
                   variant="outline"
                   mt="5"
+                  w="48"
+                  borderColor="rgba(186,0,191,0.9)"
                 >
                   Submit
                 </Button>
                 <Button
                   colorScheme="gray"
                   variant="outline"
+                  borderColor="rgba(186,0,191,0.9)"
                   mt="8"
+                  w="48"
                   onClick={() => router.push('/register')}
                 >
                   do not have an account?
