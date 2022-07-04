@@ -113,7 +113,7 @@ export const fetchCategory = async (language, category) => {
     },
     body: JSON.stringify({
       query: `query MyQuery($type:String,$language:String) {
-        jsonData(where: {language: {_eq:$language}, type: {_eq: $type}}) {
+        jsonData(where: {limit: 30, language: {_eq:$language}, type: {_eq: $type}}) {
           id
           info
           language
@@ -279,7 +279,7 @@ export const fetchEnCat = async (cat) => {
     },
     body: JSON.stringify({
       query: `query MyQuery($cat: String ) {
-        enJson(where: {cat: {_eq: $cat}}) {
+        enJson(limit: 30,where: {cat: {_eq: $cat}}) {
           author
           cat
           description
@@ -312,7 +312,7 @@ export const fetchFrCat = async (cat) => {
     },
     body: JSON.stringify({
       query: `query MyQuery($cat: String ) {
-        frJson(where: {cat: {_eq: $cat}}) {
+        frJson(limit: 30 ,where: {cat: {_eq: $cat}}) {
           author
           cat
           description
