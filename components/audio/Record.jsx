@@ -115,9 +115,10 @@ export default function RecorderControls({ recorderState, handlers, newsid }) {
                 onTouchStart={startRecording}
                 onTouchEnd={saveRecording}
               >
-                <Center bg="gray.100" borderRadius={100}>
+                <Center userSelect="none" bg="gray.100" borderRadius={100}>
                   <Image
                     alt=""
+                    userSelect="none"
                     src={
                       initRecording ? '/image/micoff.svg' : '/image/micon.svg'
                     }
