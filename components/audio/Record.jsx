@@ -112,8 +112,7 @@ export default function RecorderControls({ recorderState, handlers, newsid }) {
             <HStack w="16" py="1">
               <div
                 title=""
-                onTouchStart={startRecording}
-                onTouchEnd={saveRecording}
+                onClick={initRecording ? saveRecording : startRecording}
               >
                 <Center userSelect="none" bg="gray.100" borderRadius={100}>
                   <Image
