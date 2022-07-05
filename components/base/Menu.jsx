@@ -17,7 +17,7 @@ const Menu = () => {
     <Flex
       display={['flex', 'none']}
       w="full"
-      h="56"
+      h="44"
       overflowY="hidden"
       alignItems="center"
       flexWrap="nowrap"
@@ -45,20 +45,20 @@ const Menu = () => {
             >
               <VStack
                 mx="3"
-                bgGradient="linear(to-tr, #BA00BF,rgba(186,0,191,0.5), #BA00BF)"
+                bg="#BA00BF"
                 overflow="hidden"
-                h="48"
-                w="36"
+                h="28"
+                w="24"
                 boxShadow="lg"
                 borderRadius={15}
               >
                 <Center w="24" h="40">
-                  <Image alt="" src={news.img} w="24" h="24" />
+                  <Image alt="" src={news.img} w="12" h="12" />
                 </Center>
                 <Center>
                   <Text
                     p="2"
-                    fontSize={16}
+                    fontSize={14}
                     textAlign="center"
                     color="gray.50"
                     zIndex={100}

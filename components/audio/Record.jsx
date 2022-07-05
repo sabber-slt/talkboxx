@@ -2,7 +2,6 @@ import { Button, Center, HStack } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
-import { formatMinutes, formatSeconds } from '../../lib/format-time';
 import useAud from '../../utils/store/useAud';
 import useUser from '../../utils/store/useUser';
 
@@ -56,7 +55,7 @@ export default function RecorderControls({ recorderState, handlers, newsid }) {
   };
   return (
     <>
-      <Center display="flex" py="5" flexDirection="column" w="full">
+      <Center display="flex" py="1" flexDirection="column" w="full">
         <Center my="3">
           {aud !== null && (
             <Button
@@ -91,23 +90,30 @@ export default function RecorderControls({ recorderState, handlers, newsid }) {
                 bg="gray.100"
                 borderRadius={100}
               >
-                <Image alt="" src={'/image/play.svg'} width={37} height={37} />
+                {aud !== null && (
+                  <Image
+                    alt=""
+                    src={'/image/play.svg'}
+                    width={37}
+                    height={37}
+                  />
+                )}
               </Center>
 
-              <div>
+              {/* <div>
                 <div>
                   <span>{formatMinutes(recordingMinutes)}</span>
                   <span>:</span>
                   <span>{formatSeconds(recordingSeconds)}</span>
                 </div>
-              </div>
+              </div> */}
             </Center>
 
             <HStack w="16" py="1">
               <div
                 title=""
-                // disabled={recordingSeconds === 0}
-                onClick={initRecording ? saveRecording : startRecording}
+                onTouchStart={startRecording}
+                onTouchEnd={saveRecording}
               >
                 <Center bg="gray.100" borderRadius={100}>
                   <Image

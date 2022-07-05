@@ -34,18 +34,17 @@ export default function Modal({ newsid, title }) {
         position="fixed"
         bottom="20"
         right="0"
-        opacity={0.7}
-        bg="white"
+        bg="none"
         onClick={() => handleClick('full')}
         m={4}
       >
         <Image
           alt=""
           bg="white"
-          src="/image/talkk.png"
+          src="/image/123.jpeg"
           borderRadius={100}
-          w="32"
-          h="32"
+          w="16"
+          h="16"
         />
       </Button>
 
@@ -61,7 +60,7 @@ export default function Modal({ newsid, title }) {
           <DrawerBody>
             <Voices newsid={newsid} />
           </DrawerBody>
-          <DrawerFooter my="8">
+          <DrawerFooter my="4">
             <AudioScreen newsid={newsid} />
           </DrawerFooter>
         </DrawerContent>

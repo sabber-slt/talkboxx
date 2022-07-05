@@ -40,15 +40,16 @@ const Home = () => {
           as={motion.button}
           initial={{ scale: 0.9 }}
           whileHover={{ scale: 1.1 }}
-          position="fixed"
+          position="absolute"
           top="24"
-          right="10"
-          w="14"
-          h="14"
+          right="3"
+          color="rgba(186,0,191)"
           onClick={handle}
+          opacity={0.8}
           borderRadius={100}
+          leftIcon={<SmallAddIcon w="8" h="8" color="rgba(186,0,191)" />}
         >
-          <SmallAddIcon w="8" h="8" color="rgba(186,0,191)" />
+          save news
         </Button>
       )}
       <Modal newsid={query.id} title={query.title} />
