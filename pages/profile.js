@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-import { ExternalLinkIcon } from '@chakra-ui/icons';
 import { Box, Button, Center, Grid, Image, VStack } from '@chakra-ui/react';
 
 import { useRouter } from 'next/router';
@@ -128,15 +127,16 @@ const Home = () => {
       >
         <Grid
           templateColumns={['repeat(2,  1fr)', 'repeat(4,  1fr)']}
-          gap={3}
+          gap={5}
           h="full"
           py="16"
         >
           <Button
             size="lg"
-            height="40"
-            width="40"
+            height="32"
+            width="32"
             border="2px"
+            fontSize="xl"
             bg="whiteAlpha.100"
             borderColor="#BA00BF"
             color="#BA00BF"
@@ -145,52 +145,52 @@ const Home = () => {
 
               window.location.reload();
             }}
-            leftIcon={<ExternalLinkIcon w="7" h="7" />}
+            // leftIcon={<ExternalLinkIcon w="7" h="7" />}
           >
             logout
           </Button>
           <Button
             size="lg"
-            height="40"
-            width="40"
+            height="32"
+            width="32"
             border="2px"
+            fontSize="xl"
             bg="whiteAlpha.100"
             borderColor="#BA00BF"
             color="#BA00BF"
             onClick={() => {
               router.push('/myNews');
             }}
-            leftIcon={<ExternalLinkIcon w="7" h="7" />}
           >
             my news
           </Button>
           <Button
             size="lg"
-            height="40"
-            width="40"
+            height="32"
+            width="32"
             border="2px"
+            fontSize="xl"
             color="#BA00BF"
             bg="whiteAlpha.100"
             borderColor="#BA00BF"
             onClick={() => {
               router.push('/comments');
             }}
-            leftIcon={<ExternalLinkIcon w="7" h="7" />}
           >
             my voice
           </Button>
           <Button
             size="lg"
-            height="40"
-            width="40"
+            height="32"
+            width="32"
             border="2px"
+            fontSize="xl"
             bg="whiteAlpha.100"
             borderColor="#BA00BF"
             color="#BA00BF"
             onClick={() => {
               router.push('/contact');
             }}
-            leftIcon={<ExternalLinkIcon w="7" h="7" />}
           >
             contact us
           </Button>

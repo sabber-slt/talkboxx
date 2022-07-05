@@ -99,7 +99,7 @@ const News = () => {
                     <Text
                       px="5"
                       pt="1"
-                      fontSize={user?.language !== 'ir' ? 16 : 18}
+                      fontSize={user?.language !== 'ir' ? 15 : 18}
                       textAlign="center"
                       fontWeight={700}
                       color="gray.50"
