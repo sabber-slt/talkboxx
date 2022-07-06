@@ -108,8 +108,9 @@ const Home = () => {
           <VStack>
             <Center w="28">
               <FormLabel
-                bg="blue.800"
-                color="white"
+                bg="gray.200"
+                color="#BA00BF"
+                boxShadow="2xl"
                 w="8"
                 h="8"
                 ml="20"
