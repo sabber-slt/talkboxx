@@ -1,5 +1,13 @@
 /* eslint-disable no-undef */
-import { Box, Button, Center, Grid, Image, VStack } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Center,
+  FormLabel,
+  Grid,
+  Image,
+  VStack,
+} from '@chakra-ui/react';
 
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -97,14 +105,30 @@ const Home = () => {
           />
         </Center>
         <form onSubmit={handleSubmit}>
-          <VStack mt="4">
+          <VStack>
             <Center w="28">
+              <FormLabel
+                bg="blue.800"
+                color="white"
+                w="8"
+                h="8"
+                ml="20"
+                mb="4"
+                fontSize="2xl"
+                borderRadius="full"
+                position="absolute"
+                justifyContent="center"
+                textAlign="center"
+                htmlFor="fileUpload"
+              >
+                +
+              </FormLabel>
               <input
+                id="fileUpload"
                 type="file"
-                placeholder="Upload your image"
-                label="Image"
-                style={{ backgroundColor: 'white', width: 95 }}
-                name="myFile"
+                // label="Image"
+                style={{ display: 'none' }}
+                // name="myFile"
                 accept=".jpeg, .png, .jpg"
                 onChange={(e) => handleFileUpload(e)}
               />

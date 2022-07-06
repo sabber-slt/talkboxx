@@ -13,18 +13,24 @@ import {
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import useAud from '../../utils/store/useAud';
 import AudioScreen from '../audio/AusioScreen';
 import Voices from '../audio/Voices';
 
 export default function Modal({ newsid, title }) {
   const [size, setSize] = useState('');
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { clearAud } = useAud();
 
   const handleClick = (newSize) => {
     setSize(newSize);
     onOpen();
   };
 
+  const onCloseB = () => {
+    onClose();
+    clearAud();
+  };
   return (
     <>
       <Button
@@ -48,7 +54,7 @@ export default function Modal({ newsid, title }) {
         />
       </Button>
 
-      <Drawer onClose={onClose} isOpen={isOpen} size={size}>
+      <Drawer onClose={onCloseB} isOpen={isOpen} size={size}>
         <DrawerOverlay />
         <DrawerContent opacity={0.9}>
           <DrawerCloseButton />
