@@ -12,6 +12,12 @@
 /.next/
 /out/
 
+# local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
 # production
 /build
 
@@ -27,6 +33,9 @@ yarn-error.log*
 
 # local env files
 .env*.local
+
+# Secret file
+.env
 
 # vercel
 .vercel
