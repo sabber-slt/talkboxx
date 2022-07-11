@@ -1,7 +1,7 @@
-const api = `${process.env.DATABASE_URL}`;
+export const API = `${process.env.DATABASE_URL}`;
 
 export const fetchPublic = async (language) => {
-  const response = await fetch(api, {
+  const response = await fetch(API, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -26,7 +26,7 @@ export const fetchPublic = async (language) => {
   return data;
 };
 export const fetchMenu = async (language) => {
-  const response = await fetch(api, {
+  const response = await fetch(API, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ export const fetchMenu = async (language) => {
   return data;
 };
 export const fetchNews = async (language) => {
-  const response = await fetch(api, {
+  const response = await fetch(API, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ export const fetchNews = async (language) => {
   return data;
 };
 export const fetchComments = async (newsid) => {
-  const response = await fetch(api, {
+  const response = await fetch(API, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -107,7 +107,7 @@ export const fetchComments = async (newsid) => {
   return data;
 };
 export const fetchCategory = async (language, category) => {
-  const response = await fetch(api, {
+  const response = await fetch(API, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -134,7 +134,7 @@ export const fetchCategory = async (language, category) => {
   return data;
 };
 export const userComment = async (userid) => {
-  const response = await fetch(api, {
+  const response = await fetch(API, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -161,7 +161,7 @@ export const userComment = async (userid) => {
   return data;
 };
 export const fetchSearch = async (language) => {
-  const response = await fetch(api, {
+  const response = await fetch(API, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -186,7 +186,7 @@ export const fetchSearch = async (language) => {
   return data;
 };
 export const fetchEn = async () => {
-  const response = await fetch(api, {
+  const response = await fetch(API, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -214,7 +214,7 @@ export const fetchEn = async () => {
   return data;
 };
 export const fetchFr = async () => {
-  const response = await fetch(api, {
+  const response = await fetch(API, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -242,7 +242,7 @@ export const fetchFr = async () => {
   return data;
 };
 export const fetchIr = async () => {
-  const response = await fetch(api, {
+  const response = await fetch(API, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -273,7 +273,7 @@ export const fetchIr = async () => {
 };
 
 export const fetchEnCat = async (cat) => {
-  const response = await fetch(api, {
+  const response = await fetch(API, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -306,7 +306,7 @@ export const fetchEnCat = async (cat) => {
   return data;
 };
 export const fetchFrCat = async (cat) => {
-  const response = await fetch(api, {
+  const response = await fetch(API, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -339,7 +339,7 @@ export const fetchFrCat = async (cat) => {
   return data;
 };
 export const fetchIrCat = async (cat) => {
-  const response = await fetch(api, {
+  const response = await fetch(API, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
