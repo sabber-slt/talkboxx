@@ -1,4 +1,4 @@
-export const API = `${process.env.DATABASE_URL}`;
+export const API = 'https://talkbox.hasura.app/v1/graphql';
 
 export const fetchPublic = async (language) => {
   const response = await fetch(API, {
