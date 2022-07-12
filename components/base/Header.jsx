@@ -55,6 +55,7 @@ const Header = ({ language }) => {
                   img: language !== 'ir' ? news.urlToImage : news.thumbnail,
                   title: news.title,
                   content: news.description,
+                  url: news.url ? news.url : '',
                   source:
                     language !== 'ir' ? news.source.name : news.categories[0],
                 },

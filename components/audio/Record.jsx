@@ -2,6 +2,7 @@ import { Button, Center, HStack } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
+import { formatMinutes, formatSeconds } from '../../lib/format-time';
 import useAud from '../../utils/store/useAud';
 import useUser from '../../utils/store/useUser';
 
@@ -86,27 +87,32 @@ export default function RecorderControls({ recorderState, handlers, newsid }) {
               <Center
                 as={motion.div}
                 whileTap={{ scale: 0.7 }}
-                onClick={play}
                 bg="gray.100"
                 borderRadius={100}
               >
-                {aud !== null && (
+                {aud !== null && !initRecording && (
+                  <audio controls style={{ width: 170 }}>
+                    <source src={aud} type="audio/mpeg" />
+                  </audio>
+                )}
+                {/* {aud !== null && (
                   <Image
                     alt=""
                     src={'/image/play.svg'}
                     width={37}
                     height={37}
                   />
-                )}
+                )} */}
               </Center>
-
-              {/* <div>
+              {initRecording && (
                 <div>
-                  <span>{formatMinutes(recordingMinutes)}</span>
-                  <span>:</span>
-                  <span>{formatSeconds(recordingSeconds)}</span>
+                  <div>
+                    <span>{formatMinutes(recordingMinutes)}</span>
+                    <span>:</span>
+                    <span>{formatSeconds(recordingSeconds)}</span>
+                  </div>
                 </div>
-              </div> */}
+              )}
             </Center>
 
             <HStack w="16" py="1">
