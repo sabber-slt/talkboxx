@@ -2,8 +2,8 @@ import { Box, Center, Spinner } from '@chakra-ui/react';
 
 const Loading = () => {
   return (
-    <Box w="full" h="100vh" position="absolute">
-      <Center>
+    <Box w="full" h="100vh" position="fixed">
+      <Center h="100vh">
         <Spinner
           thickness="4px"
           speed="0.65s"

@@ -16,7 +16,7 @@ const Voices = ({ newsid }) => {
     ['news', newsid],
     () => fetchComments(newsid),
     {
-      refetchInterval: 1000,
+      refetchInterval: 2000,
     }
   );
   if (isLoading) {

@@ -1,7 +1,7 @@
 import { Box, Image, Link, Text } from '@chakra-ui/react';
 import useUser from '../../utils/store/useUser';
 
-const NewsPage = ({ img, title, source, content, url }) => {
+const NewsPage = ({ img, title, source, content, url, onClickA }) => {
   const { user } = useUser();
   return (
     <Box py="12">
@@ -36,7 +36,7 @@ const NewsPage = ({ img, title, source, content, url }) => {
       >
         {content?.replace(/<[^>]+>/g, '')}
       </Text>
-      <Box m="4" py="8">
+      <Box m="4" py="8" onClick={onClickA}>
         <Link href={url}>
           <Text as="u">news link</Text>
         </Link>

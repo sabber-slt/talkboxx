@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useQuery } from 'react-query';
 import useUser from '../../utils/store/useUser';
 import { fetchEn, fetchFr, fetchIr } from '../../utils/useFetch';
+import Loading from '../animation/Loading';
 
 const News = () => {
   const { user } = useUser();
@@ -18,7 +19,7 @@ const News = () => {
   const { data, isLoading } = useQuery('news', () => search);
 
   if (isLoading) {
-    return <Box></Box>;
+    return <Loading />;
   }
   console.log(data);
 
