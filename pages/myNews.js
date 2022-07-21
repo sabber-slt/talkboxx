@@ -1,3 +1,4 @@
+import { CloseIcon } from '@chakra-ui/icons';
 import { Box, Center, Flex, Image, Text, VStack } from '@chakra-ui/react';
 import Link from 'next/link';
 import useStore from '../utils/store/useStore';
@@ -5,7 +6,7 @@ import useUser from '../utils/store/useUser';
 
 const Home = () => {
   const { user } = useUser();
-  const { news } = useStore();
+  const { news, delNews } = useStore();
   return (
     <Flex w="full" h="full" flexDirection="column" py="16" alignItems="center">
       <Box>
@@ -32,6 +33,17 @@ const Home = () => {
                 w="96"
               >
                 <Box position="relative" zIndex={0} w="96" h="72">
+                  <Box
+                    onClick={() => {
+                      delNews(item.title);
+                    }}
+                    zIndex={100}
+                    position="absolute"
+                    top="5"
+                    right="8"
+                  >
+                    <CloseIcon zIndex={100} color="white" />
+                  </Box>
                   <Image
                     // boxSize="72"
                     w="96"

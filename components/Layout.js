@@ -8,6 +8,7 @@ const Layout = ({ children }) => {
         <Center
           display={['flex', 'none']}
           position="fixed"
+          top="0"
           w="full"
           h="16"
           bg="gray.100"

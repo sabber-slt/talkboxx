@@ -1,11 +1,14 @@
+import { CloseIcon } from '@chakra-ui/icons';
 import { Box, Center, Text } from '@chakra-ui/react';
 import { useQuery } from 'react-query';
 import Loading from '../components/animation/Loading';
+import useAud from '../utils/store/useAud';
 import useUser from '../utils/store/useUser';
 import { userComment } from '../utils/useFetch';
 
 const Home = () => {
   const { user } = useUser();
+  const { clearAud } = useAud();
 
   const { data, isLoading } = useQuery(['comments', user?.id], () =>
     userComment(user?.id)
@@ -13,6 +16,36 @@ const Home = () => {
   if (isLoading) {
     return <Loading />;
   }
+
+  const delVoice = async (id) => {
+    const response = await fetch('https://talkbox.hasura.app/v1/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Hasura-Role': 'public',
+      },
+      body: JSON.stringify({
+        query: `mutation MyMutation($id: Int) {
+          delete_voice(where: {id: {_eq: $id}}) {
+            returning {
+              id
+              like
+            }
+          }
+        }
+        
+        
+        `,
+        variables: {
+          id: parseInt(id),
+        },
+      }),
+    });
+    const data = await response.json();
+    console.log(data);
+    window.location.reload();
+    return data;
+  };
 
   return (
     <Box py="16">
@@ -22,16 +55,25 @@ const Home = () => {
             zIndex={100}
             key={item.id}
             bg="rgba(186,0,191,0.7)"
-            h="40"
+            h="48"
             w="80"
             my="3"
             borderRadius="lg"
           >
+            <Box
+              onClick={() => delVoice(item.id)}
+              position="absolute"
+              right="14"
+              pt="2"
+              zIndex={100}
+            >
+              <CloseIcon zIndex={100} color="white" />
+            </Box>
             <Center
               display="flex"
               flexDirection="column"
               justifyContent="space-around"
-              mt="5"
+              mt="8"
               h="36"
               zIndex={100}
             >

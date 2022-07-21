@@ -6,7 +6,13 @@ const useStore = create(
     (set) => ({
       news: [],
       setNews: (news) => set((state) => ({ news: [...state.news, news] })),
+      //delete news
+      delNews: (title) =>
+        set((state) => ({
+          news: state.news.filter((item) => item.title !== title),
+        })),
     }),
+
     {
       name: 'news',
     }
