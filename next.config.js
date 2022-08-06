@@ -19,6 +19,10 @@ const nextConfig = withPWA({
     scope: '/app',
 
     disable: process.env.NODE_ENV === 'development',
+    fallbackL: {
+      document: '/_offline.js',
+      video: '/video.mp4',
+    },
   },
 });
 
