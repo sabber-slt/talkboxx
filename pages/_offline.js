@@ -1,6 +1,6 @@
 import { AspectRatio } from '@chakra-ui/react';
 
-const Home = () => {
+const fallback = () => {
   return (
     <AspectRatio
       position="absolute"
@@ -18,4 +18,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default fallback;
