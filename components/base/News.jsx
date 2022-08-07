@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useQuery } from 'react-query';
 import useUser from '../../utils/store/useUser';
 import { fetchEn, fetchFr, fetchIr } from '../../utils/useFetch';
+import ErrorLoading from '../animation/ErrorLoading';
 import Loading from '../animation/Loading';
 
 const News = () => {
@@ -16,11 +17,15 @@ const News = () => {
       ? fetchIr()
       : fetchFr();
 
-  const { data, isLoading } = useQuery('news', () => search);
+  const { data, isLoading, isError } = useQuery('news', () => search);
 
   if (isLoading) {
     return <Loading />;
   }
+  if (isError) {
+    return <ErrorLoading />;
+  }
+
   console.log(data);
 
   const arr =
