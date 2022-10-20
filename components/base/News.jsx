@@ -1,7 +1,6 @@
 import { Box, Center, Flex, Grid, Image, Text, VStack } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-
 import { useQuery } from 'react-query';
 import useUser from '../../utils/store/useUser';
 import { fetchEn, fetchFr, fetchIr } from '../../utils/useFetch';
