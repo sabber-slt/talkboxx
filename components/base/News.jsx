@@ -32,7 +32,7 @@ const News = () => {
     user?.language === 'ir'
       ? data?.data?.faJson
       : user?.language === 'en'
-      ? data?.data?.enJson
+      ? data?.data?.enJsons
       : data?.data?.frJson;
 
   // console.log(data.data.jsonData[0].info.sort((a, b) => 0.5 - Math.random()));

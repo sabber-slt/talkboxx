@@ -24,7 +24,7 @@ const Home = () => {
     user?.language === 'ir'
       ? data?.data?.faJson
       : user?.language === 'en'
-      ? data?.data?.enJson
+      ? data?.data?.enJsons
       : data?.data?.frJson;
 
   return (

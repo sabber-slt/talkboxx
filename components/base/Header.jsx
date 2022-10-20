@@ -16,7 +16,7 @@ const Header = ({ language }) => {
     language === 'ir'
       ? data?.data?.faJson
       : language === 'en'
-      ? data?.data?.enJson
+      ? data?.data?.enJsons
       : data?.data?.frJson;
 
   const slice = arr?.slice(16, 20);

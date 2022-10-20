@@ -12,6 +12,7 @@ export default function RecorderControls({ recorderState, handlers, newsid }) {
   const { user } = useUser();
   const { aud, clearAud } = useAud();
   const [shown, setShown] = useState(false);
+  console.log(`newsid ${newsid}`);
 
   const upload = async () => {
     setShown(true);

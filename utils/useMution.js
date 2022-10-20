@@ -70,7 +70,7 @@ export const enSearch = async (title) => {
     body: JSON.stringify({
       query: `
       query MyQuery($title: String) {
-        enJson(distinct_on: id, where: {title: {_regex: $title}}) {
+        enJsons(distinct_on: id, where: {title: {_regex: $title}}) {
           url
           urlToImage
           title
