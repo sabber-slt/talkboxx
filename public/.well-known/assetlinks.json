@@ -1,11 +1,13 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "online.talkbox.www.twa",
       "sha256_cert_fingerprints": [
-        "36:9B:F9:AD:2F:A4:0B:CC:F4:A3:A2:42:7F:76:26:B9:35:6E:9A:09:01:C5:A1:C8:1F:B3:32:97:36:96:F3:AE"
+        "11:99:03:5B:08:56:0F:7C:1F:19:3F:A3:10:1E:6F:AF:F1:BB:35:C4:50:95:EC:61:D3:4C:8F:02:BE:F9:A2:64"
       ]
     }
   }
