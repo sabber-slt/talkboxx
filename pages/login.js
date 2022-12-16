@@ -36,8 +36,8 @@ export default function Home() {
         'X-Hasura-Role': 'public',
       },
       body: JSON.stringify({
-        query: `query MyQuery( $username:String) {
-          user(where: {username: {_eq: $username}}) {
+        query: `query MyQuery( $email:String) {
+          user(where: {email: {_eq: $email}}) {
             email
             img
             language
@@ -48,7 +48,7 @@ export default function Home() {
         }
         `,
         variables: {
-          username: username,
+          email: username,
         },
       }),
     });
@@ -115,17 +115,6 @@ export default function Home() {
               borderColor="rgba(186,0,191,0.7)"
               type="text"
               {...register('username', { required: true })}
-            />
-            <FormLabel htmlFor="email" mt="5">
-              password
-            </FormLabel>
-            <Input
-              width="auto"
-              spacing={3}
-              color="gray.600"
-              borderColor="rgba(186,0,191,0.7)"
-              type="password"
-              {...register('password', { required: true })}
             />
 
             <Center>

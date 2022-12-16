@@ -32,7 +32,8 @@ export default function Home() {
   } = useForm();
 
   async function onSubmit(values) {
-    const { username, password, email, language } = values;
+    const { username, language } = values;
+    console.log(username);
     const res = await fetch('https://talkbox.hasura.app/v1/graphql', {
       method: 'POST',
       headers: {
@@ -40,8 +41,8 @@ export default function Home() {
         'X-Hasura-Role': 'public',
       },
       body: JSON.stringify({
-        query: `mutation MyMutation($username:String,$password:String,$email:String,$language:String) {
-          insert_user_one(object: {username:$username, password: $password, email: $email,language:$language}) {
+        query: `mutation MyMutation($username:String,$email:String,$language:String) {
+          insert_user_one(object: {username:$username,  email: $email,language:$language}) {
             email
             img
             password
@@ -52,14 +53,14 @@ export default function Home() {
         }
         `,
         variables: {
-          username,
-          password,
-          email,
+          email: username,
+          username: '',
           language,
         },
       }),
     });
     const data = await res.json();
+    console.log(data);
     if (data.data) {
       console.log(data);
       setUser(data.data.insert_user_one);
@@ -128,35 +129,10 @@ export default function Home() {
                 type="text"
                 {...register('username', {
                   required: true,
-                  maxLength: {
-                    value: 20,
-                    message: 'username should not be more than 20 character ',
-                  },
                 })}
               />
             </FormControl>
-            <FormLabel htmlFor="password" mt="5">
-              password
-            </FormLabel>
-            <Input
-              width="auto"
-              spacing={3}
-              color="gray.600"
-              borderColor="rgba(186,0,191,0.7)"
-              type="password"
-              {...register('password', { required: true })}
-            />
-            <FormLabel htmlFor="email" mt="5">
-              email
-            </FormLabel>
-            <Input
-              width="auto"
-              spacing={3}
-              color="gray.600"
-              borderColor="rgba(186,0,191,0.7)"
-              type="email"
-              {...register('email', { required: true })}
-            />
+
             <FormLabel htmlFor="language" mt="5">
               language:
             </FormLabel>
