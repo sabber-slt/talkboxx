@@ -71,6 +71,12 @@ export default function Home() {
         justifyContent="center"
         alignItems="center"
       >
+        <Text color="white" fontWeight="bold">
+          talkboxteam@gmail.com{' '}
+        </Text>
+        <Text color="white" fontWeight="bold" pb="3">
+          www.talkbox.online
+        </Text>
         <Center
           bg="rgba(240, 240, 240,0.9)"
           borderRadius={10}
