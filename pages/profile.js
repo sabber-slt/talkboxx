@@ -18,7 +18,7 @@ const Home = () => {
   const { user, clearUser, setUser } = useUser();
   useEffect(() => {
     if (user === null) {
-      router.push('/login');
+      router.push('/register');
     }
   }, [user, router]);
   const [postImage, setPostImage] = useState('');
