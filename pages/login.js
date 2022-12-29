@@ -105,8 +105,8 @@ export default function Home() {
         >
           <Text color="rgba(186,0,191,0.7)">{err}</Text>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <FormLabel htmlFor="username" mt="5">
-              username
+            <FormLabel htmlFor="username" fontWeight="bold" mt="5">
+              your name:
             </FormLabel>
             <Input
               width="auto"
@@ -129,16 +129,6 @@ export default function Home() {
                   borderColor="rgba(186,0,191,0.9)"
                 >
                   Submit
-                </Button>
-                <Button
-                  colorScheme="gray"
-                  variant="outline"
-                  borderColor="rgba(186,0,191,0.9)"
-                  mt="8"
-                  w="48"
-                  onClick={() => router.push('/register')}
-                >
-                  do not have an account?
                 </Button>
               </VStack>
             </Center>

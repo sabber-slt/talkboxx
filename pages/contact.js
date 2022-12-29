@@ -1,14 +1,5 @@
 /* eslint-disable react/no-children-prop */
-import {
-  Box,
-  Button,
-  Center,
-  FormLabel,
-  Input,
-  Text,
-  Textarea,
-  VStack,
-} from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -77,53 +68,6 @@ export default function Home() {
         <Text color="white" fontWeight="bold" pb="3">
           www.talkbox.online
         </Text>
-        <Center
-          bg="rgba(240, 240, 240,0.9)"
-          borderRadius={10}
-          p="10"
-          zIndex={100}
-          display="flex"
-          flexDirection="column"
-        >
-          <Text color="rgba(186,0,191,0.7)">{err}</Text>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <FormLabel htmlFor="username" mt="5">
-              name
-            </FormLabel>
-            <Input
-              width="auto"
-              spacing={3}
-              color="gray.600"
-              borderColor="rgba(186,0,191,0.7)"
-              type="text"
-              {...register('name', { required: true })}
-            />
-            <FormLabel htmlFor="email" mt="5">
-              text
-            </FormLabel>
-            <Textarea
-              placeholder=""
-              spacing={3}
-              color="gray.600"
-              borderColor="rgba(186,0,191,0.7)"
-              {...register('text', { required: true })}
-            />
-
-            <Center>
-              <VStack>
-                <Button
-                  isLoading={isSubmitting}
-                  type="submit"
-                  colorScheme="rgba(186,0,191,0.7)"
-                  variant="outline"
-                  mt="5"
-                >
-                  Submit
-                </Button>
-              </VStack>
-            </Center>
-          </form>
-        </Center>
       </Box>
     </Box>
   );

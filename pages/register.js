@@ -115,8 +115,8 @@ export default function Home() {
           <Text color="rgba(186,0,191,0.7)">{err}</Text>
           <form onSubmit={handleSubmit(onSubmit)}>
             <FormControl isInvalid={errors.name}>
-              <FormLabel htmlFor="username" mt="5">
-                username
+              <FormLabel fontWeight="bold" htmlFor="username" mt="5">
+                your name:
               </FormLabel>
               <FormErrorMessage>
                 {errors.name && errors.name.message}
@@ -133,7 +133,7 @@ export default function Home() {
               />
             </FormControl>
 
-            <FormLabel htmlFor="language" mt="5">
+            <FormLabel fontWeight="bold" htmlFor="language" mt="5">
               language:
             </FormLabel>
             <RadioGroup defaultValue="1">
@@ -165,17 +165,7 @@ export default function Home() {
                   w="40"
                   borderColor="rgba(186,0,191,0.9)"
                 >
-                  Submit
-                </Button>
-                <Button
-                  colorScheme="gray"
-                  variant="outline"
-                  mt="8"
-                  borderColor="rgba(186,0,191,0.9)"
-                  w="40"
-                  onClick={() => router.push('/login')}
-                >
-                  have an account?
+                  Enter
                 </Button>
               </VStack>
             </Center>
